@@ -1,6 +1,8 @@
 import type { Locale, PageSlug } from '@/types';
 
-export const siteUrl = 'https://tafoukt.gheima.ma';
+export const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  'https://tafoukt-anamer-jamalkarami2019.gheima.ma';
 
 export function organizationJsonLd(locale: Locale) {
   return {

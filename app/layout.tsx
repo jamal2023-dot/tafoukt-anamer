@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Manrope, Noto_Sans_Arabic } from 'next/font/google';
+import { siteUrl } from '@/lib/seo';
 import './globals.css';
 
 const manrope = Manrope({
@@ -14,7 +15,7 @@ const arabic = Noto_Sans_Arabic({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://tafoukt.gheima.ma'),
+  metadataBase: new URL(siteUrl),
   title: {
     default: 'Association Tafoukt pour le Sport et l’Art – Anamer',
     template: '%s | Association Tafoukt',

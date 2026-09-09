@@ -82,4 +82,6 @@ Aucun paiement n’est actif. L’interface prévoit l’ajout ultérieur de CMI
 5. Conserver d’abord le sous-domaine `*.gheima.app` de préproduction.
 6. Après vérification de l’usage actuel de `gheima.ma`, connecter de préférence `tafoukt.gheima.ma` ou `association.gheima.ma`, sans modifier le domaine principal.
 
+Une fois le domaine personnalisé actif, définir `NEXT_PUBLIC_SITE_URL` avec son URL HTTPS dans l’environnement Gheima, puis redéployer afin que les URLs canoniques, le sitemap et les cartes sociales utilisent le bon domaine.
+
 Les déploiements suivants sont déclenchés par les pushs sur `main`. Les Pull Requests peuvent utiliser des environnements d’aperçu si cette option est activée dans Gheima.
