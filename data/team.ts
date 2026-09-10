@@ -9,7 +9,7 @@ export type TeamMember = {
 export const team: TeamMember[] = [
   {
     id: 'president-ibrahim-ouhmid',
-    name: { fr: 'Ibrahim Ouhmid', ar: 'احميد إبراهيم' },
+    name: { fr: 'Ibrahim Ouhmid', ar: 'احميد ابراهيم' },
     role: { fr: 'Président', ar: 'الرئيس' },
   },
   {
@@ -18,28 +18,28 @@ export const team: TeamMember[] = [
     role: { fr: 'Vice-président', ar: 'نائب الرئيس' },
   },
   {
-    id: 'treasurer-rachid-ankar',
-    name: { fr: 'Rachid Ankar', ar: 'أنكار رشيد' },
-    role: { fr: 'Trésorier', ar: 'أمين المال' },
+    id: 'treasurer-rachid-ankmar',
+    name: { fr: 'Rachid Ankmar', ar: 'انكمار رشيد' },
+    role: { fr: 'Trésorier', ar: 'الامين' },
   },
   {
-    id: 'assistant-treasurer-abdellah-kray',
-    name: { fr: 'Abdellah Kray', ar: 'كراي عبد الله' },
-    role: { fr: 'Trésorier adjoint', ar: 'نائب أمين المال' },
+    id: 'assistant-treasurer-abdellah-karami',
+    name: { fr: 'Abdellah Karami', ar: 'كرامي عبد الله' },
+    role: { fr: 'Trésorier adjoint', ar: 'نائب الامين' },
   },
   {
     id: 'secretary-el-houssine-lotfi',
     name: { fr: 'El Houssine Lotfi', ar: 'لطفي الحسين' },
-    role: { fr: 'Secrétaire général', ar: 'الكاتب العام' },
+    role: { fr: 'Secrétaire', ar: 'الكاتب' },
   },
   {
-    id: 'assistant-secretary-jamal-kray',
-    name: { fr: 'Jamal Kray', ar: 'كراي جمال' },
-    role: { fr: 'Secrétaire général adjoint', ar: 'نائب الكاتب العام' },
+    id: 'assistant-secretary-jamal-karami',
+    name: { fr: 'Jamal Karami', ar: 'كرامي جمال' },
+    role: { fr: 'Secrétaire adjoint', ar: 'نائب الكاتب' },
   },
   {
-    id: 'advisor-abdellah-kray',
-    name: { fr: 'Abdellah Kray', ar: 'كراي عبد الله' },
+    id: 'advisor-abdellah-karami',
+    name: { fr: 'Abdellah Karami', ar: 'كرامي عبد الله' },
     role: { fr: 'Conseiller', ar: 'المستشار' },
   },
 ];
