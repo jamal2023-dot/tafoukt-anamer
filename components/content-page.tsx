@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import {
   ArrowUpRight,
@@ -189,6 +190,38 @@ function AnamerLit({ locale }: { locale: Locale }) {
   const d = pageDetails[locale];
   const objectives = d.anamerObjectives as string[];
   const process = d.anamerProcess as string[];
+  const schoolPhotos = [
+    {
+      src: '/images/anamer-lit/ecole-entree.jpg',
+      alt:
+        locale === 'fr'
+          ? 'Entrée principale de l’école d’Anamer avec son portail bleu et ses fresques murales'
+          : 'المدخل الرئيسي لمدرسة أنامر ببوابته الزرقاء ورسوماته الجدارية',
+      caption: locale === 'fr' ? 'L’entrée de l’école' : 'مدخل المدرسة',
+    },
+    {
+      src: '/images/anamer-lit/ecole-cour.jpg',
+      alt:
+        locale === 'fr'
+          ? 'Cour de l’école d’Anamer et bâtiments scolaires devant les montagnes'
+          : 'ساحة مدرسة أنامر ومبانيها الدراسية أمام الجبال',
+      caption:
+        locale === 'fr'
+          ? 'La cour et les bâtiments scolaires'
+          : 'الساحة والمباني المدرسية',
+    },
+    {
+      src: '/images/anamer-lit/ecole-panorama.jpg',
+      alt:
+        locale === 'fr'
+          ? 'Vue panoramique de l’école d’Anamer dans son environnement rural'
+          : 'منظر بانورامي لمدرسة أنامر في محيطها القروي',
+      caption:
+        locale === 'fr'
+          ? 'L’école dans son environnement'
+          : 'المدرسة في محيطها',
+    },
+  ];
   return (
     <>
       <section className="section compact">
@@ -210,6 +243,44 @@ function AnamerLit({ locale }: { locale: Locale }) {
             <strong>{d.pupils as string}</strong>
             <p>{d.pupilsNote as string}</p>
           </aside>
+        </div>
+      </section>
+      <section className="section school-gallery-section">
+        <SectionHeading
+          eyebrow={locale === 'fr' ? 'Sur le terrain' : 'من الميدان'}
+          title={
+            locale === 'fr'
+              ? 'L’école d’Anamer, telle qu’elle est aujourd’hui.'
+              : 'مدرسة أنامر كما هي اليوم.'
+          }
+          intro={
+            locale === 'fr'
+              ? 'Trois vues de l’école et de son environnement immédiat, au cœur du projet Anamer Lit.'
+              : 'ثلاث صور للمدرسة ومحيطها المباشر، في صميم مشروع أنامر تقرأ.'
+          }
+        />
+        <div className="school-gallery">
+          {schoolPhotos.map((photo, index) => (
+            <figure
+              className={`school-photo school-photo-${index + 1}`}
+              key={photo.src}
+            >
+              <Image
+                src={photo.src}
+                alt={photo.alt}
+                fill
+                sizes={
+                  index === 0
+                    ? '(max-width: 800px) 100vw, 55vw'
+                    : '(max-width: 800px) 100vw, 40vw'
+                }
+              />
+              <figcaption>
+                <span>{String(index + 1).padStart(2, '0')}</span>
+                {photo.caption}
+              </figcaption>
+            </figure>
+          ))}
         </div>
       </section>
       <section className="section cream-section">

@@ -1246,6 +1246,66 @@ select {
   color: var(--muted);
   line-height: 1.9;
 }
+.school-gallery-section {
+  padding-top: 36px;
+  border-top: 1px solid var(--line);
+}
+.school-gallery {
+  display: grid;
+  grid-template-columns: minmax(0, 1.22fr) minmax(320px, 0.78fr);
+  grid-template-rows: repeat(2, minmax(250px, 1fr));
+  gap: 16px;
+  min-height: 720px;
+  margin-top: 62px;
+}
+.school-photo {
+  position: relative;
+  min-width: 0;
+  margin: 0;
+  overflow: hidden;
+  background: var(--cream);
+}
+.school-photo-1 {
+  grid-row: 1 / -1;
+}
+.school-photo img {
+  object-fit: cover;
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.school-photo:hover img {
+  transform: scale(1.025);
+}
+.school-photo figcaption {
+  position: absolute;
+  right: 18px;
+  bottom: 18px;
+  left: 18px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: fit-content;
+  max-width: calc(100% - 36px);
+  padding: 11px 14px;
+  background: rgba(17, 25, 54, 0.92);
+  color: white;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1.4;
+  backdrop-filter: blur(10px);
+}
+.school-photo figcaption span {
+  padding-right: 11px;
+  border-right: 1px solid rgba(255, 255, 255, 0.25);
+  color: var(--gold);
+  font-size: 9px;
+  letter-spacing: 0.08em;
+}
+.locale-ar .school-photo figcaption span {
+  padding-right: 0;
+  padding-left: 11px;
+  border-right: 0;
+  border-left: 1px solid rgba(255, 255, 255, 0.25);
+}
 .beneficiary-card {
   min-height: 330px;
   display: flex;
@@ -1662,6 +1722,15 @@ select {
   .contact-grid {
     grid-template-columns: 1fr;
   }
+  .school-gallery {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 470px 280px;
+    min-height: auto;
+  }
+  .school-photo-1 {
+    grid-column: 1 / -1;
+    grid-row: auto;
+  }
   .pillar-list article {
     grid-template-columns: 1fr;
     gap: 10px;
@@ -1848,6 +1917,21 @@ select {
   }
   .story-grid {
     gap: 35px;
+  }
+  .school-gallery-section {
+    padding-top: 24px;
+  }
+  .school-gallery {
+    grid-template-columns: 1fr;
+    grid-template-rows: none;
+    gap: 12px;
+    margin-top: 42px;
+  }
+  .school-photo,
+  .school-photo-1 {
+    grid-column: auto;
+    grid-row: auto;
+    aspect-ratio: 4 / 3;
   }
   .gallery-placeholder {
     min-height: 430px;
