@@ -28,6 +28,7 @@ import { team } from '@/data/team';
 import type { Locale } from '@/types';
 import { ActionIcon } from './action-icon';
 import { SectionHeading } from './section-heading';
+import { TeamPortrait } from './team-portrait';
 
 const reveal: Variants = {
   hidden: { opacity: 0, y: 24 },
@@ -315,12 +316,7 @@ export function HomePage({ locale }: { locale: Locale }) {
             {team.slice(0, 3).map((member, index) => (
               <motion.article key={member.id} variants={reveal}>
                 <span>0{index + 1}</span>
-                <div className="avatar-monogram">
-                  {member.name.fr
-                    .split(' ')
-                    .map((n) => n[0])
-                    .join('')}
-                </div>
+                <TeamPortrait member={member} />
                 <div>
                   <h3>{member.name[locale]}</h3>
                   <p>{member.role[locale]}</p>

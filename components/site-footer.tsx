@@ -1,9 +1,10 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowUpRight, MessageCircle, Phone } from 'lucide-react';
+import { Mail, Phone } from 'lucide-react';
 import { contactDetails } from '@/data/contact';
 import { siteCopy } from '@/data/content';
 import type { Locale } from '@/types';
+import { FacebookIcon, WhatsAppIcon } from './social-icons';
 
 export function SiteFooter({ locale }: { locale: Locale }) {
   const copy = siteCopy[locale];
@@ -43,19 +44,24 @@ export function SiteFooter({ locale }: { locale: Locale }) {
               <span dir="ltr">{phone.display}</span>
             </a>
           ))}
+          <a href={contactDetails.email.href}>
+            <Mail size={14} />
+            <span dir="ltr">{contactDetails.email.display}</span>
+          </a>
           <a
             href={contactDetails.facebook.href}
             target="_blank"
             rel="noreferrer"
           >
-            Facebook <ArrowUpRight size={14} />
+            <FacebookIcon size={14} />
+            Facebook
           </a>
           <a
             href={contactDetails.whatsapp.href}
             target="_blank"
             rel="noreferrer"
           >
-            <MessageCircle size={14} />
+            <WhatsAppIcon size={14} />
             WhatsApp
           </a>
         </div>

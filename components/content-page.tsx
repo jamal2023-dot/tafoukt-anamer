@@ -10,7 +10,7 @@ import {
   FileText,
   HandHeart,
   Landmark,
-  MessageCircle,
+  Mail,
   Phone,
   ShieldCheck,
 } from 'lucide-react';
@@ -26,6 +26,8 @@ import type { Locale, PageSlug } from '@/types';
 import { ActionIcon } from './action-icon';
 import { ContactForm } from './contact-form';
 import { SectionHeading } from './section-heading';
+import { FacebookIcon, WhatsAppIcon } from './social-icons';
+import { TeamPortrait } from './team-portrait';
 
 export function ContentPage({
   locale,
@@ -115,14 +117,11 @@ function Association({ locale }: { locale: Locale }) {
           {team.map((member, index) => (
             <article key={member.id}>
               <span>0{index + 1}</span>
-              <div className="avatar-monogram">
-                {member.name.fr
-                  .split(' ')
-                  .map((n) => n[0])
-                  .join('')}
+              <TeamPortrait member={member} />
+              <div>
+                <h3>{member.name[locale]}</h3>
+                <p>{member.role[locale]}</p>
               </div>
-              <h3>{member.name[locale]}</h3>
-              <p>{member.role[locale]}</p>
             </article>
           ))}
         </div>
@@ -587,7 +586,15 @@ function Contact({ locale }: { locale: Locale }) {
       ltr: true,
     })),
     {
-      icon: ArrowUpRight,
+      icon: Mail,
+      label: locale === 'fr' ? 'E-mail' : 'البريد الإلكتروني',
+      value: contactDetails.email.display,
+      href: contactDetails.email.href,
+      external: false,
+      ltr: true,
+    },
+    {
+      icon: FacebookIcon,
       label: locale === 'fr' ? 'Page Facebook' : 'صفحة فيسبوك',
       value: contactDetails.facebook.display,
       href: contactDetails.facebook.href,
@@ -595,7 +602,7 @@ function Contact({ locale }: { locale: Locale }) {
       ltr: true,
     },
     {
-      icon: MessageCircle,
+      icon: WhatsAppIcon,
       label: locale === 'fr' ? 'Communauté WhatsApp' : 'مجتمع واتساب',
       value: locale === 'fr' ? 'Rejoindre la communauté' : 'انضم إلى المجتمع',
       href: contactDetails.whatsapp.href,
@@ -629,8 +636,8 @@ function Contact({ locale }: { locale: Locale }) {
           </div>
           <p className="privacy-note">
             {locale === 'fr'
-              ? 'Ne renseignez aucune donnée sensible. Le formulaire n’envoie rien tant qu’un service officiel n’est pas configuré.'
-              : 'لا تدخل أي معلومات حساسة. لا يرسل النموذج أي بيانات قبل إعداد خدمة رسمية.'}
+              ? 'Le formulaire prépare votre message pour un envoi à l’adresse officielle de l’association.'
+              : 'يُعِدّ النموذج رسالتك لإرسالها إلى البريد الإلكتروني الرسمي للجمعية.'}
           </p>
         </div>
         <ContactForm locale={locale} />

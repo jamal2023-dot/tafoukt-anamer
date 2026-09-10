@@ -2,6 +2,7 @@
 
 import { type SyntheticEvent, useState } from 'react';
 import { CheckCircle2 } from 'lucide-react';
+import { contactDetails } from '@/data/contact';
 import type { Locale } from '@/types';
 
 const labels = {
@@ -11,10 +12,10 @@ const labels = {
     phone: 'Téléphone',
     subject: 'Sujet',
     message: 'Message',
-    button: 'Préparer le message',
-    note: 'Ce formulaire valide les informations localement. Aucun message n’est encore transmis.',
+    button: 'Envoyer par e-mail',
+    note: 'Après validation, votre messagerie s’ouvrira avec le message adressé à l’association.',
     success:
-      'Formulaire validé. Aucun envoi n’a été effectué : la connexion à un service de messagerie reste à configurer.',
+      'Votre messagerie s’est ouverte. Vérifiez le message, puis appuyez sur Envoyer.',
     required: 'Champ requis',
   },
   ar: {
@@ -23,10 +24,9 @@ const labels = {
     phone: 'الهاتف',
     subject: 'الموضوع',
     message: 'الرسالة',
-    button: 'تحضير الرسالة',
-    note: 'يتحقق هذا النموذج من المعلومات محلياً فقط. لا يتم إرسال أي رسالة حالياً.',
-    success:
-      'تم التحقق من النموذج. لم يتم الإرسال: ما زال ربط خدمة المراسلة بحاجة إلى الإعداد.',
+    button: 'إرسال عبر البريد الإلكتروني',
+    note: 'بعد التحقق، سيفتح تطبيق البريد لديك برسالة موجهة إلى الجمعية.',
+    success: 'تم فتح تطبيق البريد. راجع الرسالة ثم اضغط على إرسال.',
     required: 'حقل مطلوب',
   },
 };
@@ -36,7 +36,28 @@ export function ContactForm({ locale }: { locale: Locale }) {
   const [submitted, setSubmitted] = useState(false);
   function handleSubmit(event: SyntheticEvent<HTMLFormElement, SubmitEvent>) {
     event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    const fieldValue = (field: string) => {
+      const value = data.get(field);
+      return typeof value === 'string' ? value : '';
+    };
+    const name = fieldValue('name');
+    const email = fieldValue('email');
+    const phone = fieldValue('phone');
+    const subject = fieldValue('subject');
+    const message = fieldValue('message');
+    const body = [
+      `${copy.name}: ${name}`,
+      `${copy.email}: ${email}`,
+      phone ? `${copy.phone}: ${phone}` : '',
+      '',
+      message,
+    ]
+      .filter((line) => line !== '')
+      .join('\n');
+
     setSubmitted(true);
+    window.location.href = `${contactDetails.email.href}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   }
   return (
     <form className="contact-form" onSubmit={handleSubmit} noValidate={false}>
