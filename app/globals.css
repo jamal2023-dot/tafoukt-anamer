@@ -931,6 +931,14 @@ select {
   font-size: 12px;
   line-height: 1.55;
 }
+.bureau-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.team-more {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 26px;
+}
 .partner-cta-section {
   padding: 100px clamp(24px, 7vw, 110px);
   display: grid;
@@ -1598,31 +1606,44 @@ select {
   display: grid;
   gap: 12px;
 }
-.contact-cards article {
+.contact-card {
   display: flex;
   align-items: center;
   gap: 15px;
   padding: 20px;
   border: 1px solid var(--line);
   border-radius: var(--radius-sm);
+  background: var(--paper);
+  transition:
+    border-color 180ms ease,
+    transform 180ms ease;
 }
-.contact-cards svg {
+.contact-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--gold-deep);
+}
+.contact-card svg {
+  flex: none;
   color: var(--gold-deep);
 }
-.contact-cards div {
+.contact-card div {
   display: flex;
   flex-direction: column;
   gap: 4px;
 }
-.contact-cards span {
+.contact-card span {
   color: var(--muted);
   font-size: 10px;
   font-weight: 800;
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
-.contact-cards strong {
+.contact-card strong {
   font-size: 13px;
+}
+.contact-card .contact-card-arrow {
+  margin-inline-start: auto;
+  color: var(--muted);
 }
 .privacy-note {
   margin: 24px 0 0;

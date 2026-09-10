@@ -1,4 +1,5 @@
 import type { Locale, PageSlug } from '@/types';
+import { contactDetails } from '@/data/contact';
 
 export const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL ??
@@ -19,6 +20,8 @@ export function organizationJsonLd(locale: Locale) {
     url: `${siteUrl}/${locale}`,
     logo: `${siteUrl}/logo.jpg`,
     areaServed: 'Anamer, Morocco',
+    telephone: contactDetails.phones.map((phone) => phone.display),
+    sameAs: [contactDetails.facebook.href, contactDetails.whatsapp.href],
     nonprofitStatus: 'NonprofitType',
   };
 }

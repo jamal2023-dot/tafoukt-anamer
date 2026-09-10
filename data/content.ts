@@ -44,7 +44,6 @@ export const siteCopy = {
     legal: 'Informations',
     contact: 'Contact',
     rights: 'Tous droits réservés.',
-    contactPending: 'Coordonnées officielles à compléter',
     pages: {
       association: {
         eyebrow: 'Qui sommes-nous ?',
@@ -146,7 +145,6 @@ export const siteCopy = {
     legal: 'معلومات',
     contact: 'اتصل بنا',
     rights: 'جميع الحقوق محفوظة.',
-    contactPending: 'بيانات الاتصال الرسمية قيد الاستكمال',
     pages: {
       association: {
         eyebrow: 'من نحن؟',
@@ -249,8 +247,8 @@ export const homeCopy = {
     newsEyebrow: 'Actualités',
     newsTitle: 'La vie de l’association, documentée.',
     newsEmpty: 'Les premières actualités vérifiées seront publiées ici.',
-    teamEyebrow: 'L’équipe',
-    teamTitle: 'Des responsabilités claires, au service d’une mission commune.',
+    teamEyebrow: 'Le bureau',
+    teamTitle: 'Une équipe élue, au service d’une mission commune.',
     partnersEyebrow: 'Partenaires',
     partnersTitle: 'Construisons ensemble un impact durable à Anamer.',
     partnersEmpty: 'Aucun partenaire n’est affiché sans confirmation.',
@@ -282,8 +280,8 @@ export const homeCopy = {
     newsEyebrow: 'المستجدات',
     newsTitle: 'حياة الجمعية موثقة.',
     newsEmpty: 'ستنشر هنا أولى الأخبار بعد التحقق منها.',
-    teamEyebrow: 'الفريق',
-    teamTitle: 'مسؤوليات واضحة في خدمة مهمة مشتركة.',
+    teamEyebrow: 'المكتب',
+    teamTitle: 'فريق منتخب في خدمة مهمة مشتركة.',
     partnersEyebrow: 'الشركاء',
     partnersTitle: 'لنبنِ معاً أثراً مستداماً في أنامر.',
     partnersEmpty: 'لا يُعرض أي شريك دون تأكيد.',

@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight, MessageCircle, Phone } from 'lucide-react';
+import { contactDetails } from '@/data/contact';
 import { siteCopy } from '@/data/content';
 import type { Locale } from '@/types';
 
@@ -36,10 +37,27 @@ export function SiteFooter({ locale }: { locale: Locale }) {
         </div>
         <div className="footer-contact">
           <h2>{copy.contact}</h2>
-          <p>{copy.contactPending}</p>
-          <Link href={`/${locale}/contact`}>
-            {copy.contact} <ArrowUpRight size={16} />
-          </Link>
+          {contactDetails.phones.map((phone) => (
+            <a href={phone.href} key={phone.href}>
+              <Phone size={14} />
+              <span dir="ltr">{phone.display}</span>
+            </a>
+          ))}
+          <a
+            href={contactDetails.facebook.href}
+            target="_blank"
+            rel="noreferrer"
+          >
+            Facebook <ArrowUpRight size={14} />
+          </a>
+          <a
+            href={contactDetails.whatsapp.href}
+            target="_blank"
+            rel="noreferrer"
+          >
+            <MessageCircle size={14} />
+            WhatsApp
+          </a>
         </div>
       </div>
       <div className="footer-bottom">

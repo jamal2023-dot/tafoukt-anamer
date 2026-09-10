@@ -10,12 +10,12 @@ import {
   FileText,
   HandHeart,
   Landmark,
-  Mail,
-  MapPin,
+  MessageCircle,
   Phone,
   ShieldCheck,
 } from 'lucide-react';
 import { actionPoles } from '@/data/actions';
+import { contactDetails } from '@/data/contact';
 import { pageDetails, siteCopy } from '@/data/content';
 import { impact } from '@/data/impact';
 import { news } from '@/data/news';
@@ -99,16 +99,21 @@ function Association({ locale }: { locale: Locale }) {
       </section>
       <section className="section team-section">
         <SectionHeading
-          eyebrow={locale === 'fr' ? 'Équipe actuelle' : 'الفريق الحالي'}
+          eyebrow={locale === 'fr' ? 'Bureau actuel' : 'المكتب الحالي'}
           title={
             locale === 'fr'
-              ? 'Des rôles identifiés. Une responsabilité partagée.'
-              : 'مهام واضحة ومسؤولية مشتركة.'
+              ? 'Sept membres, des responsabilités clairement définies.'
+              : 'سبعة أعضاء ومسؤوليات محددة بوضوح.'
+          }
+          intro={
+            locale === 'fr'
+              ? 'Composition du bureau communiquée par l’association.'
+              : 'تشكيلة المكتب كما قدمتها الجمعية.'
           }
         />
-        <div className="team-grid">
+        <div className="team-grid bureau-grid">
           {team.map((member, index) => (
-            <article key={member.name.fr}>
+            <article key={member.id}>
               <span>0{index + 1}</span>
               <div className="avatar-monogram">
                 {member.name.fr
@@ -572,26 +577,55 @@ function Support({ locale }: { locale: Locale }) {
 }
 
 function Contact({ locale }: { locale: Locale }) {
-  const site = siteCopy[locale];
   const contactItems = [
-    { icon: Mail, label: locale === 'fr' ? 'Email' : 'البريد الإلكتروني' },
-    { icon: Phone, label: locale === 'fr' ? 'Téléphone' : 'الهاتف' },
-    { icon: MapPin, label: locale === 'fr' ? 'Adresse' : 'العنوان' },
+    ...contactDetails.phones.map((phone, index) => ({
+      icon: Phone,
+      label: locale === 'fr' ? `Téléphone ${index + 1}` : `الهاتف ${index + 1}`,
+      value: phone.display,
+      href: phone.href,
+      external: false,
+      ltr: true,
+    })),
+    {
+      icon: ArrowUpRight,
+      label: locale === 'fr' ? 'Page Facebook' : 'صفحة فيسبوك',
+      value: contactDetails.facebook.display,
+      href: contactDetails.facebook.href,
+      external: true,
+      ltr: true,
+    },
+    {
+      icon: MessageCircle,
+      label: locale === 'fr' ? 'Communauté WhatsApp' : 'مجتمع واتساب',
+      value: locale === 'fr' ? 'Rejoindre la communauté' : 'انضم إلى المجتمع',
+      href: contactDetails.whatsapp.href,
+      external: true,
+      ltr: false,
+    },
   ];
   return (
     <section className="section compact">
       <div className="contact-grid">
         <div>
           <div className="contact-cards">
-            {contactItems.map(({ icon: Icon, label }) => (
-              <article key={label}>
-                <Icon size={20} />
-                <div>
-                  <span>{label}</span>
-                  <strong>{site.toComplete}</strong>
-                </div>
-              </article>
-            ))}
+            {contactItems.map(
+              ({ icon: Icon, label, value, href, external, ltr }) => (
+                <a
+                  className="contact-card"
+                  href={href}
+                  key={href}
+                  target={external ? '_blank' : undefined}
+                  rel={external ? 'noreferrer' : undefined}
+                >
+                  <Icon size={20} />
+                  <div>
+                    <span>{label}</span>
+                    <strong dir={ltr ? 'ltr' : undefined}>{value}</strong>
+                  </div>
+                  <ArrowUpRight className="contact-card-arrow" size={16} />
+                </a>
+              ),
+            )}
           </div>
           <p className="privacy-note">
             {locale === 'fr'

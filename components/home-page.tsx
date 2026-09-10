@@ -312,8 +312,8 @@ export function HomePage({ locale }: { locale: Locale }) {
             <SectionHeading eyebrow={home.teamEyebrow} title={home.teamTitle} />
           </motion.div>
           <div className="team-grid">
-            {team.map((member, index) => (
-              <motion.article key={member.name.fr} variants={reveal}>
+            {team.slice(0, 3).map((member, index) => (
+              <motion.article key={member.id} variants={reveal}>
                 <span>0{index + 1}</span>
                 <div className="avatar-monogram">
                   {member.name.fr
@@ -328,6 +328,14 @@ export function HomePage({ locale }: { locale: Locale }) {
               </motion.article>
             ))}
           </div>
+          <motion.div className="team-more" variants={reveal}>
+            <Link className="text-link" href={`/${locale}/association`}>
+              {locale === 'fr'
+                ? 'Voir les 7 membres du bureau'
+                : 'عرض أعضاء المكتب السبعة'}
+              <ArrowUpRight size={17} />
+            </Link>
+          </motion.div>
         </motion.section>
 
         <motion.section
