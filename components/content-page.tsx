@@ -730,9 +730,9 @@ function Contact({ locale }: { locale: Locale }) {
           <p className="privacy-note">
             {tr(
               locale,
-              'Le formulaire prépare votre message pour un envoi à l’adresse officielle de l’association.',
-              'يُعِدّ النموذج رسالتك لإرسالها إلى البريد الإلكتروني الرسمي للجمعية.',
-              'The form prepares your message for delivery to the association’s official inbox.',
+              'Le formulaire transmet directement votre message à l’association. Votre adresse servira uniquement à vous répondre.',
+              'يرسل النموذج رسالتك مباشرة إلى الجمعية، ولن يُستخدم بريدك الإلكتروني إلا للرد عليك.',
+              'The form sends your message directly to the association. Your email address is only used to reply to you.',
             )}
           </p>
         </div>

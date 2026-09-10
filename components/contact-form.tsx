@@ -1,8 +1,7 @@
 'use client';
 
 import { type SyntheticEvent, useState } from 'react';
-import { CheckCircle2 } from 'lucide-react';
-import { contactDetails } from '@/data/contact';
+import { AlertCircle, CheckCircle2, LoaderCircle } from 'lucide-react';
 import type { Locale } from '@/types';
 
 const labels = {
@@ -12,10 +11,12 @@ const labels = {
     phone: 'Téléphone',
     subject: 'Sujet',
     message: 'Message',
-    button: 'Envoyer par e-mail',
-    note: 'Après validation, votre messagerie s’ouvrira avec le message adressé à l’association.',
-    success:
-      'Votre messagerie s’est ouverte. Vérifiez le message, puis appuyez sur Envoyer.',
+    button: 'Envoyer le message',
+    sending: 'Envoi en cours…',
+    note: 'Votre message sera envoyé directement à l’association.',
+    success: 'Votre message a bien été envoyé. Merci de nous avoir contactés.',
+    error:
+      'Le message n’a pas pu être envoyé. Réessayez dans quelques instants.',
     required: 'Champ requis',
   },
   ar: {
@@ -24,9 +25,11 @@ const labels = {
     phone: 'الهاتف',
     subject: 'الموضوع',
     message: 'الرسالة',
-    button: 'إرسال عبر البريد الإلكتروني',
-    note: 'بعد التحقق، سيفتح تطبيق البريد لديك برسالة موجهة إلى الجمعية.',
-    success: 'تم فتح تطبيق البريد. راجع الرسالة ثم اضغط على إرسال.',
+    button: 'إرسال الرسالة',
+    sending: 'جارٍ الإرسال…',
+    note: 'ستُرسل رسالتك مباشرة إلى الجمعية.',
+    success: 'تم إرسال رسالتك بنجاح. شكراً لتواصلك معنا.',
+    error: 'تعذر إرسال الرسالة. يرجى المحاولة مرة أخرى بعد قليل.',
     required: 'حقل مطلوب',
   },
   en: {
@@ -35,43 +38,67 @@ const labels = {
     phone: 'Phone',
     subject: 'Subject',
     message: 'Message',
-    button: 'Send by email',
-    note: 'After validation, your email app will open with a message addressed to the association.',
-    success: 'Your email app has opened. Review the message, then press Send.',
+    button: 'Send message',
+    sending: 'Sending…',
+    note: 'Your message will be sent directly to the association.',
+    success: 'Your message has been sent. Thank you for contacting us.',
+    error: 'Your message could not be sent. Please try again in a moment.',
     required: 'Required field',
   },
 };
 
+type SubmitStatus = 'idle' | 'sending' | 'success' | 'error';
+
 export function ContactForm({ locale }: { locale: Locale }) {
   const copy = labels[locale];
-  const [submitted, setSubmitted] = useState(false);
-  function handleSubmit(event: SyntheticEvent<HTMLFormElement, SubmitEvent>) {
+  const [status, setStatus] = useState<SubmitStatus>('idle');
+
+  async function handleSubmit(
+    event: SyntheticEvent<HTMLFormElement, SubmitEvent>,
+  ) {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
+    const form = event.currentTarget;
+    const data = new FormData(form);
     const fieldValue = (field: string) => {
       const value = data.get(field);
       return typeof value === 'string' ? value : '';
     };
-    const name = fieldValue('name');
-    const email = fieldValue('email');
-    const phone = fieldValue('phone');
-    const subject = fieldValue('subject');
-    const message = fieldValue('message');
-    const body = [
-      `${copy.name}: ${name}`,
-      `${copy.email}: ${email}`,
-      phone ? `${copy.phone}: ${phone}` : '',
-      '',
-      message,
-    ]
-      .filter((line) => line !== '')
-      .join('\n');
 
-    setSubmitted(true);
-    window.location.href = `${contactDetails.email.href}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    setStatus('sending');
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          locale,
+          name: fieldValue('name'),
+          email: fieldValue('email'),
+          phone: fieldValue('phone'),
+          subject: fieldValue('subject'),
+          message: fieldValue('message'),
+          website: fieldValue('website'),
+        }),
+      });
+
+      if (!response.ok) throw new Error('Contact request failed');
+
+      form.reset();
+      setStatus('success');
+    } catch {
+      setStatus('error');
+    }
   }
   return (
-    <form className="contact-form" onSubmit={handleSubmit} noValidate={false}>
+    <form
+      className="contact-form"
+      onSubmit={handleSubmit}
+      noValidate={false}
+      aria-busy={status === 'sending'}
+    >
+      <label className="honeypot-field" aria-hidden="true">
+        Website
+        <input name="website" tabIndex={-1} autoComplete="off" />
+      </label>
       <div className="field-row">
         <label>
           {copy.name}
@@ -114,14 +141,22 @@ export function ContactForm({ locale }: { locale: Locale }) {
         />
       </label>
       <p className="form-note">{copy.note}</p>
-      <button className="button" type="submit">
-        {copy.button}
+      <button className="button" type="submit" disabled={status === 'sending'}>
+        {status === 'sending' ? (
+          <LoaderCircle className="form-spinner" size={17} />
+        ) : null}
+        {status === 'sending' ? copy.sending : copy.button}
       </button>
-      <div className="form-status" aria-live="polite">
-        {submitted ? (
+      <div className="form-status" data-state={status} aria-live="polite">
+        {status === 'success' ? (
           <>
             <CheckCircle2 size={19} />
             {copy.success}
+          </>
+        ) : status === 'error' ? (
+          <>
+            <AlertCircle size={19} />
+            {copy.error}
           </>
         ) : null}
       </div>

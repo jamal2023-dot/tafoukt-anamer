@@ -1,8 +1,4 @@
 export const contactDetails = {
-  email: {
-    display: 'jamal.karami.elec@gmail.com',
-    href: 'mailto:jamal.karami.elec@gmail.com',
-  },
   phones: [
     { display: '+212 639-342171', href: 'tel:+212639342171' },
     { display: '+212 708-297705', href: 'tel:+212708297705' },

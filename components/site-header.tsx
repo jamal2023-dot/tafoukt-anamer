@@ -1,6 +1,12 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowUpRight, Languages, Menu } from 'lucide-react';
+import {
+  ArrowUpRight,
+  Check,
+  ChevronDown,
+  Languages,
+  Menu,
+} from 'lucide-react';
 import { siteCopy } from '@/data/content';
 import { localeNames, locales } from '@/lib/i18n';
 import type { Locale, PageSlug } from '@/types';
@@ -13,6 +19,17 @@ export function SiteHeader({
   currentSlug?: PageSlug;
 }) {
   const copy = siteCopy[locale];
+  const languageMenuLabel =
+    locale === 'ar'
+      ? 'اختيار اللغة'
+      : locale === 'en'
+        ? 'Choose language'
+        : 'Choisir la langue';
+  const localeCodes: Record<Locale, string> = {
+    fr: 'FR',
+    ar: 'AR',
+    en: 'EN',
+  };
   return (
     <>
       <a className="skip-link" href="#main-content">
@@ -50,22 +67,17 @@ export function SiteHeader({
           ))}
         </nav>
         <div className="header-actions">
-          <div
-            className="language-switcher"
-            aria-label={
-              locale === 'ar'
-                ? 'اختيار اللغة'
-                : locale === 'en'
-                  ? 'Choose language'
-                  : 'Choisir la langue'
-            }
-          >
-            <Languages aria-hidden="true" size={17} />
-            {locales
-              .filter((candidate) => candidate !== locale)
-              .map((candidate) => (
+          <details className="language-menu">
+            <summary aria-label={languageMenuLabel}>
+              <Languages aria-hidden="true" size={18} />
+              <span aria-hidden="true">{localeCodes[locale]}</span>
+              <ChevronDown aria-hidden="true" size={13} />
+            </summary>
+            <div className="language-menu-panel">
+              {locales.map((candidate) => (
                 <Link
-                  className="language"
+                  aria-label={localeNames[candidate]}
+                  aria-current={candidate === locale ? 'page' : undefined}
                   href={
                     currentSlug
                       ? `/${candidate}/${currentSlug}`
@@ -74,10 +86,17 @@ export function SiteHeader({
                   hrefLang={candidate}
                   key={candidate}
                 >
-                  {localeNames[candidate]}
+                  <span className="language-menu-code">
+                    {localeCodes[candidate]}
+                  </span>
+                  <span>{localeNames[candidate]}</span>
+                  {candidate === locale ? (
+                    <Check aria-hidden="true" size={15} />
+                  ) : null}
                 </Link>
               ))}
-          </div>
+            </div>
+          </details>
           <Link className="button button-small" href={`/${locale}/soutenir`}>
             {copy.support}
           </Link>
