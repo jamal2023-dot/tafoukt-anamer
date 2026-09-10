@@ -1,10 +1,15 @@
 import type { Metadata } from 'next';
-import { Manrope, Noto_Sans_Arabic } from 'next/font/google';
+import { Manrope, Newsreader, Noto_Sans_Arabic } from 'next/font/google';
 import { siteUrl } from '@/lib/seo';
 import './globals.css';
 
 const manrope = Manrope({
   variable: '--font-manrope',
+  subsets: ['latin'],
+  display: 'swap',
+});
+const newsreader = Newsreader({
+  variable: '--font-newsreader',
   subsets: ['latin'],
   display: 'swap',
 });
@@ -34,7 +39,7 @@ export default function RootLayout({
   return (
     <html lang="fr" suppressHydrationWarning data-scroll-behavior="smooth">
       <body
-        className={`${manrope.variable} ${arabic.variable}`}
+        className={`${manrope.variable} ${newsreader.variable} ${arabic.variable}`}
         suppressHydrationWarning
       >
         {children}

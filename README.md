@@ -8,6 +8,7 @@ Site officiel bilingue (français / العربية) de l’Association Tafoukt p
 - React 19
 - Tailwind CSS 4
 - Lucide Icons
+- Framer Motion pour les transitions accessibles
 - Données éditoriales locales et typées
 - Déploiement Node.js ou Docker, prêt pour Gheima
 
@@ -39,6 +40,7 @@ data/         contenus modifiables
 lib/          i18n et données structurées SEO
 public/       logo officiel et carte de partage
 types/        types TypeScript partagés
+DESIGN.md     principes, tokens et règles d’interface
 ```
 
 ## Modifier le contenu
