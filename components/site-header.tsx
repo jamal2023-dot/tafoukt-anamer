@@ -25,7 +25,7 @@ export function SiteHeader({
           className="brand"
           aria-label={`${copy.breadcrumbHome} — Association Tafoukt`}
         >
-          <Image src="/logo.jpg" width={52} height={48} alt="" priority />
+          <Image src="/logo.jpg" width={48} height={48} alt="" priority />
           <span>
             <strong>Tafoukt</strong>
             <small>{copy.brandLine}</small>

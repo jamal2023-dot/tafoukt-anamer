@@ -10,7 +10,7 @@ export function SiteFooter({ locale }: { locale: Locale }) {
     <footer className="site-footer">
       <div className="footer-main">
         <div className="footer-brand">
-          <Image src="/logo.jpg" width={70} height={65} alt="" />
+          <Image src="/logo.jpg" width={70} height={70} alt="" />
           <div>
             <strong>Association Tafoukt</strong>
             <p>{copy.footerIntro}</p>
