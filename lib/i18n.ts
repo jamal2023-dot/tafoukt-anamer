@@ -2,7 +2,13 @@ import { notFound } from 'next/navigation';
 import { pageSlugs } from '@/data/content';
 import type { Locale, PageSlug } from '@/types';
 
-export const locales: Locale[] = ['fr', 'ar'];
+export const locales: Locale[] = ['fr', 'ar', 'en'];
+
+export const localeNames: Record<Locale, string> = {
+  fr: 'Français',
+  ar: 'العربية',
+  en: 'English',
+};
 
 export function assertLocale(value: string): asserts value is Locale {
   if (!locales.includes(value as Locale)) notFound();

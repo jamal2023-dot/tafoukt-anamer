@@ -1,7 +1,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowUpRight, Menu } from 'lucide-react';
+import { ArrowUpRight, Languages, Menu } from 'lucide-react';
 import { siteCopy } from '@/data/content';
+import { localeNames, locales } from '@/lib/i18n';
 import type { Locale, PageSlug } from '@/types';
 
 export function SiteHeader({
@@ -12,8 +13,6 @@ export function SiteHeader({
   currentSlug?: PageSlug;
 }) {
   const copy = siteCopy[locale];
-  const other = locale === 'fr' ? 'ar' : 'fr';
-  const otherHref = currentSlug ? `/${other}/${currentSlug}` : `/${other}`;
   return (
     <>
       <a className="skip-link" href="#main-content">
@@ -23,17 +22,21 @@ export function SiteHeader({
         <Link
           href={`/${locale}`}
           className="brand"
-          aria-label={`${copy.breadcrumbHome} — Association Tafoukt`}
+          aria-label={`${copy.breadcrumbHome} — ${copy.organizationName}`}
         >
           <Image src="/logo.jpg" width={48} height={48} alt="" priority />
           <span>
-            <strong>Tafoukt</strong>
+            <strong>{copy.brandName}</strong>
             <small>{copy.brandLine}</small>
           </span>
         </Link>
         <nav
           aria-label={
-            locale === 'fr' ? 'Navigation principale' : 'التنقل الرئيسي'
+            locale === 'ar'
+              ? 'التنقل الرئيسي'
+              : locale === 'en'
+                ? 'Main navigation'
+                : 'Navigation principale'
           }
         >
           {copy.nav.map(([label, slug]) => (
@@ -47,9 +50,34 @@ export function SiteHeader({
           ))}
         </nav>
         <div className="header-actions">
-          <Link className="language" href={otherHref} hrefLang={other}>
-            {copy.otherLocale}
-          </Link>
+          <div
+            className="language-switcher"
+            aria-label={
+              locale === 'ar'
+                ? 'اختيار اللغة'
+                : locale === 'en'
+                  ? 'Choose language'
+                  : 'Choisir la langue'
+            }
+          >
+            <Languages aria-hidden="true" size={17} />
+            {locales
+              .filter((candidate) => candidate !== locale)
+              .map((candidate) => (
+                <Link
+                  className="language"
+                  href={
+                    currentSlug
+                      ? `/${candidate}/${currentSlug}`
+                      : `/${candidate}`
+                  }
+                  hrefLang={candidate}
+                  key={candidate}
+                >
+                  {localeNames[candidate]}
+                </Link>
+              ))}
+          </div>
           <Link className="button button-small" href={`/${locale}/soutenir`}>
             {copy.support}
           </Link>

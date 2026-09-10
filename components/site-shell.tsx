@@ -15,7 +15,7 @@ export function SiteShell({
 }) {
   return (
     <div
-      className={locale === 'ar' ? 'locale-ar' : 'locale-fr'}
+      className={`locale-${locale}`}
       lang={locale}
       dir={locale === 'ar' ? 'rtl' : 'ltr'}
     >

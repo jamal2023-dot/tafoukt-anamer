@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { Mail, Phone } from 'lucide-react';
+import { Phone } from 'lucide-react';
 import { contactDetails } from '@/data/contact';
 import { siteCopy } from '@/data/content';
 import type { Locale } from '@/types';
@@ -14,7 +14,7 @@ export function SiteFooter({ locale }: { locale: Locale }) {
         <div className="footer-brand">
           <Image src="/logo.jpg" width={70} height={70} alt="" />
           <div>
-            <strong>Association Tafoukt</strong>
+            <strong>{copy.organizationName}</strong>
             <p>{copy.footerIntro}</p>
           </div>
         </div>
@@ -44,10 +44,6 @@ export function SiteFooter({ locale }: { locale: Locale }) {
               <span dir="ltr">{phone.display}</span>
             </a>
           ))}
-          <a href={contactDetails.email.href}>
-            <Mail size={14} />
-            <span dir="ltr">{contactDetails.email.display}</span>
-          </a>
           <a
             href={contactDetails.facebook.href}
             target="_blank"
@@ -68,7 +64,7 @@ export function SiteFooter({ locale }: { locale: Locale }) {
       </div>
       <div className="footer-bottom">
         <span>
-          © {new Date().getFullYear()} Association Tafoukt. {copy.rights}
+          © {new Date().getFullYear()} {copy.organizationName}. {copy.rights}
         </span>
         <span lang="ar">من أنامر… لأنامر</span>
       </div>

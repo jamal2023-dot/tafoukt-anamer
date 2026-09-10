@@ -1,11 +1,15 @@
 import type { LocalizedText } from '@/types';
 
 export const partnerLevels: LocalizedText[] = [
-  { fr: 'Partenaire officiel', ar: 'الشريك الرسمي' },
-  { fr: 'Partenaire principal', ar: 'الشريك الرئيسي' },
-  { fr: 'Partenaire éducation', ar: 'شريك التعليم' },
-  { fr: 'Partenaire solidaire', ar: 'الشريك التضامني' },
-  { fr: 'Partenaire technique', ar: 'الشريك التقني' },
+  { fr: 'Partenaire officiel', ar: 'الشريك الرسمي', en: 'Official partner' },
+  { fr: 'Partenaire principal', ar: 'الشريك الرئيسي', en: 'Main partner' },
+  { fr: 'Partenaire éducation', ar: 'شريك التعليم', en: 'Education partner' },
+  {
+    fr: 'Partenaire solidaire',
+    ar: 'الشريك التضامني',
+    en: 'Community partner',
+  },
+  { fr: 'Partenaire technique', ar: 'الشريك التقني', en: 'Technical partner' },
 ];
 
 // Ajouter ici uniquement les partenaires confirmés par l'association.

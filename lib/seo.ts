@@ -6,17 +6,17 @@ export const siteUrl =
   'https://tafoukt-anamer-jamalkarami2019.gheima.ma';
 
 export function organizationJsonLd(locale: Locale) {
+  const organizationNames: Record<Locale, string> = {
+    fr: 'Association Tafoukt pour le Sport et l’Art – Anamer',
+    ar: 'جمعية تافوكت للرياضة و الفن – أنامر',
+    en: 'Tafoukt Association for Sport and Art – Anamer',
+  };
   return {
     '@context': 'https://schema.org',
     '@type': 'NGO',
-    name:
-      locale === 'fr'
-        ? 'Association Tafoukt pour le Sport et l’Art – Anamer'
-        : 'جمعية تافوكت للرياضة والفن – أنامر',
+    name: organizationNames[locale],
     alternateName:
-      locale === 'fr'
-        ? 'جمعية تافوكت للرياضة والفن – أنامر'
-        : 'Association Tafoukt pour le Sport et l’Art – Anamer',
+      locale === 'ar' ? organizationNames.fr : organizationNames.ar,
     url: `${siteUrl}/${locale}`,
     logo: `${siteUrl}/logo.jpg`,
     areaServed: 'Anamer, Morocco',
@@ -38,7 +38,7 @@ export function breadcrumbJsonLd(
       {
         '@type': 'ListItem',
         position: 1,
-        name: locale === 'fr' ? 'Accueil' : 'الرئيسية',
+        name: { fr: 'Accueil', ar: 'الرئيسية', en: 'Home' }[locale],
         item: `${siteUrl}/${locale}`,
       },
       {

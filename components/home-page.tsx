@@ -27,6 +27,7 @@ import { projects } from '@/data/projects';
 import { team } from '@/data/team';
 import type { Locale } from '@/types';
 import { ActionIcon } from './action-icon';
+import { NewsCard } from './news-card';
 import { SectionHeading } from './section-heading';
 import { TeamPortrait } from './team-portrait';
 
@@ -45,6 +46,12 @@ const stagger: Variants = {
 };
 
 const viewport = { once: true, amount: 0.18 };
+
+function tr(locale: Locale, fr: string, ar: string, en: string) {
+  if (locale === 'ar') return ar;
+  if (locale === 'en') return en;
+  return fr;
+}
 
 export function HomePage({ locale }: { locale: Locale }) {
   const home = homeCopy[locale];
@@ -92,11 +99,12 @@ export function HomePage({ locale }: { locale: Locale }) {
 
           <div
             className="hero-visual"
-            aria-label={
-              locale === 'fr'
-                ? 'Identité visuelle de l’Association Tafoukt'
-                : 'الهوية البصرية لجمعية تافوكت'
-            }
+            aria-label={tr(
+              locale,
+              'Identité visuelle de l’Association Tafoukt',
+              'الهوية البصرية لجمعية تافوكت',
+              'Visual identity of the Tafoukt Association',
+            )}
           >
             <div className="hero-pattern" aria-hidden="true" />
             <motion.div
@@ -104,12 +112,12 @@ export function HomePage({ locale }: { locale: Locale }) {
               initial={{
                 opacity: 0,
                 y: 32,
-                rotate: locale === 'fr' ? 2 : -2,
+                rotate: locale === 'ar' ? -2 : 2,
               }}
               animate={{
                 opacity: 1,
                 y: 0,
-                rotate: locale === 'fr' ? -1 : 1,
+                rotate: locale === 'ar' ? 1 : -1,
               }}
               transition={{
                 duration: 0.85,
@@ -126,18 +134,22 @@ export function HomePage({ locale }: { locale: Locale }) {
                   src="/logo.jpg"
                   fill
                   sizes="(max-width: 768px) 68vw, 360px"
-                  alt={
-                    locale === 'fr'
-                      ? 'Emblème officiel de l’Association Tafoukt'
-                      : 'الشعار الرسمي لجمعية تافوكت'
-                  }
+                  alt={tr(
+                    locale,
+                    'Emblème officiel de l’Association Tafoukt',
+                    'الشعار الرسمي لجمعية تافوكت',
+                    'Official emblem of the Tafoukt Association',
+                  )}
                   priority
                 />
               </div>
               <p className="poster-name">
-                {locale === 'fr'
-                  ? 'Association Tafoukt pour le Sport et l’Art'
-                  : 'جمعية تافوكت للرياضة والفن'}
+                {tr(
+                  locale,
+                  'Association Tafoukt pour le Sport et l’Art',
+                  'جمعية تافوكت للرياضة و الفن',
+                  'Tafoukt Association for Sport and Art',
+                )}
               </p>
               <p className="poster-place">Anamer / أنامر</p>
             </motion.div>
@@ -299,7 +311,13 @@ export function HomePage({ locale }: { locale: Locale }) {
                 <ArrowUpRight size={16} />
               </Link>
             </div>
-          ) : null}
+          ) : (
+            <div className="news-grid news-grid-preview">
+              {news.slice(0, 2).map((item) => (
+                <NewsCard item={item} locale={locale} key={item.slug} />
+              ))}
+            </div>
+          )}
         </motion.section>
 
         <motion.section
@@ -326,9 +344,12 @@ export function HomePage({ locale }: { locale: Locale }) {
           </div>
           <motion.div className="team-more" variants={reveal}>
             <Link className="text-link" href={`/${locale}/association`}>
-              {locale === 'fr'
-                ? 'Voir les 7 membres du bureau'
-                : 'عرض أعضاء المكتب السبعة'}
+              {tr(
+                locale,
+                'Voir les 7 membres du bureau',
+                'عرض أعضاء المكتب السبعة',
+                'Meet the 7 board members',
+              )}
               <ArrowUpRight size={17} />
             </Link>
           </motion.div>

@@ -18,6 +18,8 @@ export const siteCopy = {
   fr: {
     localeName: 'Français',
     otherLocale: 'العربية',
+    brandName: 'Tafoukt',
+    organizationName: 'Association Tafoukt',
     skip: 'Aller au contenu',
     brandLine: 'Sport · Art · Anamer',
     menu: 'Menu',
@@ -119,6 +121,8 @@ export const siteCopy = {
   ar: {
     localeName: 'العربية',
     otherLocale: 'Français',
+    brandName: 'تافوكت',
+    organizationName: 'جمعية تافوكت للرياضة و الفن',
     skip: 'الانتقال إلى المحتوى',
     brandLine: 'الرياضة · الفن · أنامر',
     menu: 'القائمة',
@@ -215,6 +219,109 @@ export const siteCopy = {
       { eyebrow: string; title: string; intro: string }
     >,
   },
+  en: {
+    localeName: 'English',
+    otherLocale: 'Français',
+    brandName: 'Tafoukt',
+    organizationName: 'Tafoukt Association for Sport and Art',
+    skip: 'Skip to content',
+    brandLine: 'Sport · Art · Anamer',
+    menu: 'Menu',
+    close: 'Close',
+    nav: [
+      ['The association', 'association'],
+      ['Our work', 'domaines-action'],
+      ['Projects', 'projets'],
+      ['Anamer Reads', 'anamer-lit'],
+      ['Transparency', 'transparence'],
+      ['Partners', 'partenaires'],
+    ] as Array<[string, PageSlug]>,
+    support: 'Support us',
+    discover: 'Discover',
+    learnMore: 'Learn more',
+    allProjects: 'View all projects',
+    breadcrumbHome: 'Home',
+    toComplete: 'To be completed',
+    noData: 'No information has been published yet.',
+    footerIntro:
+      'A local association serving sport, education, culture, solidarity and citizenship in Anamer.',
+    quickLinks: 'Quick links',
+    engage: 'Get involved',
+    legal: 'Information',
+    contact: 'Contact',
+    rights: 'All rights reserved.',
+    pages: {
+      association: {
+        eyebrow: 'Who we are',
+        title: 'Local energy, a future we build together.',
+        intro:
+          'The Tafoukt Association for Sport and Art works for Anamer’s development, with particular attention to children and young people.',
+      },
+      'domaines-action': {
+        eyebrow: 'Our work',
+        title: 'Five areas, one shared ambition.',
+        intro:
+          'Creating practical and lasting opportunities through sport, education, culture, solidarity and active citizenship.',
+      },
+      projets: {
+        eyebrow: 'Projects',
+        title: 'Commitments taking shape.',
+        intro:
+          'Each project starts with an identified need, follows clear stages and reports on the resources involved.',
+      },
+      'anamer-lit': {
+        eyebrow: 'Education project',
+        title: 'Anamer Reads — أنامر تقرأ',
+        intro:
+          'A programme supporting education and equal opportunity, guided by the motto من أنامر… لأنامر.',
+      },
+      'terrain-anamer-bouchfoud': {
+        eyebrow: 'Sport project',
+        title: 'Anamer–Bouchfoud Sports Field',
+        intro:
+          'A future welcoming and sustainable sports space for children and young people in the region.',
+      },
+      actualites: {
+        eyebrow: 'Field journal',
+        title: 'News from the association.',
+        intro:
+          'Follow projects, activities and key moments through information verified by the association.',
+      },
+      transparence: {
+        eyebrow: 'Governance',
+        title: 'Trust is built through evidence.',
+        intro:
+          'Contributions, expenses, documents and project progress will be published here as they are verified.',
+      },
+      partenaires: {
+        eyebrow: 'Our partners',
+        title: 'Let’s build lasting impact in Anamer.',
+        intro:
+          'This space will only feature organisations whose partnership with the association is confirmed.',
+      },
+      'devenir-partenaire': {
+        eyebrow: 'Work with us',
+        title: 'Your commitment can expand the reach of our projects.',
+        intro:
+          'Companies, foundations and institutions can support a specific initiative, programme or useful skill.',
+      },
+      soutenir: {
+        eyebrow: 'Support us',
+        title: 'Every contribution can become practical action.',
+        intro:
+          'Choose the form of support that suits you. No online payment method is currently active.',
+      },
+      contact: {
+        eyebrow: 'Contact',
+        title: 'Let’s talk about what we can build together.',
+        intro:
+          'Have a question, proposal or wish to contribute? Prepare your message here.',
+      },
+    } satisfies Record<
+      PageSlug,
+      { eyebrow: string; title: string; intro: string }
+    >,
+  },
 } satisfies Record<Locale, unknown>;
 
 export const homeCopy = {
@@ -285,6 +392,41 @@ export const homeCopy = {
     partnersEyebrow: 'الشركاء',
     partnersTitle: 'لنبنِ معاً أثراً مستداماً في أنامر.',
     partnersEmpty: 'لا يُعرض أي شريك دون تأكيد.',
+  },
+  en: {
+    location: 'Anamer, Souss-Massa',
+    titleStart: 'Together, we build',
+    titleAccent: 'Anamer’s future.',
+    lead: 'Sport, education, culture, solidarity and active citizenship serving today’s and tomorrow’s generations.',
+    associationCta: 'Discover the association',
+    projectCta: 'Support our projects',
+    partnerCta: 'Become a partner',
+    residentTitle: 'An association led by local people',
+    residentText: 'turning local commitment into lasting impact.',
+    since: 'Since 1999',
+    visualTag: 'Act here. Build for tomorrow.',
+    beliefLabel: 'Our belief',
+    belief: '“Development begins with the people of the region.”',
+    actionEyebrow: 'Our areas of action',
+    actionTitle: 'Growing talent. Strengthening connections.',
+    actionIntro:
+      'Initiatives rooted in everyday life in Anamer, designed with residents and delivered transparently.',
+    projectsEyebrow: 'Priority projects',
+    projectsTitle: 'Two projects, one promise for the future.',
+    projectsIntro:
+      'Education and sport as foundations for the next generation.',
+    impactEyebrow: 'Impact & transparency',
+    impactTitle: 'Say what is done. Show how.',
+    impactIntro:
+      'No figure will be published without supporting evidence and verification. Information will appear as it becomes available.',
+    newsEyebrow: 'News',
+    newsTitle: 'The association’s work, documented.',
+    newsEmpty: 'The first verified news stories will be published here.',
+    teamEyebrow: 'The board',
+    teamTitle: 'An elected team serving a shared mission.',
+    partnersEyebrow: 'Partners',
+    partnersTitle: 'Let’s build lasting impact in Anamer together.',
+    partnersEmpty: 'No partner is displayed without confirmation.',
   },
 } satisfies Record<Locale, Record<string, string>>;
 
@@ -410,6 +552,68 @@ export const pageDetails = {
       'اتفاقية',
       'التنفيذ',
       'حصيلة مشتركة',
+    ],
+  },
+  en: {
+    vision:
+      'Helping to build a supportive, dynamic local community that can offer more opportunities to children and young people.',
+    mission:
+      'Bringing together residents, young people, former pupils, the diaspora and public and private partners around practical, transparent and sustainable projects.',
+    philosophy:
+      'We believe development begins with the people of the region, and that sincere work becomes meaningful impact over time.',
+    anamerContext:
+      'For generations, the Anamer school branch has helped educate children from the region. Some former pupils are now engineers, doctors, teachers, entrepreneurs and professionals in many fields. A new generation continues its education there today.',
+    pupils: 'Around 24 pupils',
+    pupilsNote:
+      'The final number must be confirmed by the school administration.',
+    anamerObjectives: [
+      'School supplies and backpacks',
+      'Geometry and drawing materials',
+      'Clothing, smocks and shoes according to need',
+      'Hygiene supplies and books',
+      'Teaching materials',
+      'Shared equipment after approval',
+    ],
+    anamerProcess: [
+      'Identify needs',
+      'Set priorities',
+      'Prepare the budget',
+      'Mobilise support',
+      'Purchase supplies',
+      'Distribute resources',
+      'Publish supporting documents',
+      'Share the outcome',
+    ],
+    terrainFields: [
+      'Progress',
+      'Construction work',
+      'Needs',
+      'Budget',
+      'Partners',
+      'Timeline',
+    ],
+    supportOptions: [
+      'Financial contribution',
+      'Material contribution',
+      'Volunteering',
+      'Skills-based sponsorship',
+      'Sponsorship',
+      'Funding a project',
+    ],
+    partnerOptions: [
+      'Fund a specific stage',
+      'Provide useful equipment',
+      'Contribute specialist skills',
+      'Support a programme over time',
+      'Co-create a local initiative',
+    ],
+    partnerProcess: [
+      'Initial discussion',
+      'Identify the need',
+      'Documented proposal',
+      'Agreement',
+      'Implementation',
+      'Shared review',
     ],
   },
 } satisfies Record<Locale, Record<string, string | string[]>>;

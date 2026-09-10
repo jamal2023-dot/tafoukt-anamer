@@ -15,20 +15,25 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   assertLocale(locale);
   const copy = homeCopy[locale];
-  const title =
-    locale === 'fr'
-      ? 'Ensemble, construisons l’avenir d’Anamer'
-      : 'معاً، نبني مستقبل أنامر';
+  const title = {
+    fr: 'Ensemble, construisons l’avenir d’Anamer',
+    ar: 'معاً، نبني مستقبل أنامر',
+    en: 'Together, let’s build Anamer’s future',
+  }[locale];
   return {
     title,
     description: copy.lead,
     alternates: {
       canonical: `${siteUrl}/${locale}`,
-      languages: { fr: `${siteUrl}/fr`, ar: `${siteUrl}/ar` },
+      languages: {
+        fr: `${siteUrl}/fr`,
+        ar: `${siteUrl}/ar`,
+        en: `${siteUrl}/en`,
+      },
     },
     openGraph: {
       type: 'website',
-      locale: locale === 'fr' ? 'fr_MA' : 'ar_MA',
+      locale: { fr: 'fr_MA', ar: 'ar_MA', en: 'en_GB' }[locale],
       url: `${siteUrl}/${locale}`,
       title,
       description: copy.lead,

@@ -29,6 +29,17 @@ const labels = {
     success: 'تم فتح تطبيق البريد. راجع الرسالة ثم اضغط على إرسال.',
     required: 'حقل مطلوب',
   },
+  en: {
+    name: 'Name',
+    email: 'Email',
+    phone: 'Phone',
+    subject: 'Subject',
+    message: 'Message',
+    button: 'Send by email',
+    note: 'After validation, your email app will open with a message addressed to the association.',
+    success: 'Your email app has opened. Review the message, then press Send.',
+    required: 'Required field',
+  },
 };
 
 export function ContactForm({ locale }: { locale: Locale }) {

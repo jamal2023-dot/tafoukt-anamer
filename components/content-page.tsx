@@ -10,7 +10,6 @@ import {
   FileText,
   HandHeart,
   Landmark,
-  Mail,
   Phone,
   ShieldCheck,
 } from 'lucide-react';
@@ -25,9 +24,16 @@ import { team } from '@/data/team';
 import type { Locale, PageSlug } from '@/types';
 import { ActionIcon } from './action-icon';
 import { ContactForm } from './contact-form';
+import { NewsCard } from './news-card';
 import { SectionHeading } from './section-heading';
 import { FacebookIcon, WhatsAppIcon } from './social-icons';
 import { TeamPortrait } from './team-portrait';
+
+function tr<T>(locale: Locale, fr: T, ar: T, en: T): T {
+  if (locale === 'ar') return ar;
+  if (locale === 'en') return en;
+  return fr;
+}
 
 export function ContentPage({
   locale,
@@ -43,7 +49,7 @@ export function ContentPage({
       <section className="page-hero">
         <nav
           className="breadcrumbs"
-          aria-label={locale === 'fr' ? 'Fil d’Ariane' : 'مسار التنقل'}
+          aria-label={tr(locale, 'Fil d’Ariane', 'مسار التنقل', 'Breadcrumb')}
         >
           <Link href={`/${locale}`}>{site.breadcrumbHome}</Link>
           <span>/</span>
@@ -77,10 +83,12 @@ function renderPage(locale: Locale, slug: PageSlug) {
 
 function Association({ locale }: { locale: Locale }) {
   const d = pageDetails[locale];
-  const labels =
-    locale === 'fr'
-      ? ['Notre vision', 'Notre mission', 'Notre philosophie']
-      : ['رؤيتنا', 'مهمتنا', 'فلسفتنا'];
+  const labels = tr(
+    locale,
+    ['Notre vision', 'Notre mission', 'Notre philosophie'],
+    ['رؤيتنا', 'مهمتنا', 'فلسفتنا'],
+    ['Our vision', 'Our mission', 'Our philosophy'],
+  );
   const values = [
     d.vision as string,
     d.mission as string,
@@ -101,17 +109,24 @@ function Association({ locale }: { locale: Locale }) {
       </section>
       <section className="section team-section">
         <SectionHeading
-          eyebrow={locale === 'fr' ? 'Bureau actuel' : 'المكتب الحالي'}
-          title={
-            locale === 'fr'
-              ? 'Sept membres, des responsabilités clairement définies.'
-              : 'سبعة أعضاء ومسؤوليات محددة بوضوح.'
-          }
-          intro={
-            locale === 'fr'
-              ? 'Composition du bureau communiquée par l’association.'
-              : 'تشكيلة المكتب كما قدمتها الجمعية.'
-          }
+          eyebrow={tr(
+            locale,
+            'Bureau actuel',
+            'المكتب الحالي',
+            'Current board',
+          )}
+          title={tr(
+            locale,
+            'Sept membres, des responsabilités clairement définies.',
+            'سبعة أعضاء ومسؤوليات محددة بوضوح.',
+            'Seven members with clearly defined responsibilities.',
+          )}
+          intro={tr(
+            locale,
+            'Composition du bureau communiquée par l’association.',
+            'تشكيلة المكتب كما قدمتها الجمعية.',
+            'Board composition provided by the association.',
+          )}
         />
         <div className="team-grid bureau-grid">
           {team.map((member, index) => (
@@ -197,33 +212,48 @@ function AnamerLit({ locale }: { locale: Locale }) {
   const schoolPhotos = [
     {
       src: '/images/anamer-lit/ecole-entree.jpg',
-      alt:
-        locale === 'fr'
-          ? 'Entrée principale de l’école d’Anamer avec son portail bleu et ses fresques murales'
-          : 'المدخل الرئيسي لمدرسة أنامر ببوابته الزرقاء ورسوماته الجدارية',
-      caption: locale === 'fr' ? 'L’entrée de l’école' : 'مدخل المدرسة',
+      alt: tr(
+        locale,
+        'Entrée principale de l’école d’Anamer avec son portail bleu et ses fresques murales',
+        'المدخل الرئيسي لمدرسة أنامر ببوابته الزرقاء ورسوماته الجدارية',
+        'Main entrance to Anamer school, with its blue gate and wall murals',
+      ),
+      caption: tr(
+        locale,
+        'L’entrée de l’école',
+        'مدخل المدرسة',
+        'School entrance',
+      ),
     },
     {
       src: '/images/anamer-lit/ecole-cour.jpg',
-      alt:
-        locale === 'fr'
-          ? 'Cour de l’école d’Anamer et bâtiments scolaires devant les montagnes'
-          : 'ساحة مدرسة أنامر ومبانيها الدراسية أمام الجبال',
-      caption:
-        locale === 'fr'
-          ? 'La cour et les bâtiments scolaires'
-          : 'الساحة والمباني المدرسية',
+      alt: tr(
+        locale,
+        'Cour de l’école d’Anamer et bâtiments scolaires devant les montagnes',
+        'ساحة مدرسة أنامر ومبانيها الدراسية أمام الجبال',
+        'Anamer school courtyard and buildings in front of the mountains',
+      ),
+      caption: tr(
+        locale,
+        'La cour et les bâtiments scolaires',
+        'الساحة والمباني المدرسية',
+        'Courtyard and school buildings',
+      ),
     },
     {
       src: '/images/anamer-lit/ecole-panorama.jpg',
-      alt:
-        locale === 'fr'
-          ? 'Vue panoramique de l’école d’Anamer dans son environnement rural'
-          : 'منظر بانورامي لمدرسة أنامر في محيطها القروي',
-      caption:
-        locale === 'fr'
-          ? 'L’école dans son environnement'
-          : 'المدرسة في محيطها',
+      alt: tr(
+        locale,
+        'Vue panoramique de l’école d’Anamer dans son environnement rural',
+        'منظر بانورامي لمدرسة أنامر في محيطها القروي',
+        'Panoramic view of Anamer school in its rural surroundings',
+      ),
+      caption: tr(
+        locale,
+        'L’école dans son environnement',
+        'المدرسة في محيطها',
+        'The school and its surroundings',
+      ),
     },
   ];
   return (
@@ -233,12 +263,15 @@ function AnamerLit({ locale }: { locale: Locale }) {
           <div>
             <p className="eyebrow">
               <span />
-              {locale === 'fr' ? 'Contexte' : 'السياق'}
+              {tr(locale, 'Contexte', 'السياق', 'Background')}
             </p>
             <h2>
-              {locale === 'fr'
-                ? 'Une école, plusieurs générations, un nouvel élan.'
-                : 'مدرسة وأجيال متعددة وانطلاقة جديدة.'}
+              {tr(
+                locale,
+                'Une école, plusieurs générations, un nouvel élan.',
+                'مدرسة وأجيال متعددة وانطلاقة جديدة.',
+                'One school, several generations, a new beginning.',
+              )}
             </h2>
             <p>{d.anamerContext as string}</p>
           </div>
@@ -251,17 +284,19 @@ function AnamerLit({ locale }: { locale: Locale }) {
       </section>
       <section className="section school-gallery-section">
         <SectionHeading
-          eyebrow={locale === 'fr' ? 'Sur le terrain' : 'من الميدان'}
-          title={
-            locale === 'fr'
-              ? 'L’école d’Anamer, telle qu’elle est aujourd’hui.'
-              : 'مدرسة أنامر كما هي اليوم.'
-          }
-          intro={
-            locale === 'fr'
-              ? 'Trois vues de l’école et de son environnement immédiat, au cœur du projet Anamer Lit.'
-              : 'ثلاث صور للمدرسة ومحيطها المباشر، في صميم مشروع أنامر تقرأ.'
-          }
+          eyebrow={tr(locale, 'Sur le terrain', 'من الميدان', 'From the field')}
+          title={tr(
+            locale,
+            'L’école d’Anamer, telle qu’elle est aujourd’hui.',
+            'مدرسة أنامر كما هي اليوم.',
+            'Anamer school as it is today.',
+          )}
+          intro={tr(
+            locale,
+            'Trois vues de l’école et de son environnement immédiat, au cœur du projet Anamer Lit.',
+            'ثلاث صور للمدرسة ومحيطها المباشر، في صميم مشروع أنامر تقرأ.',
+            'Three views of the school and its immediate surroundings, at the heart of the Anamer Reads project.',
+          )}
         />
         <div className="school-gallery">
           {schoolPhotos.map((photo, index) => (
@@ -289,12 +324,13 @@ function AnamerLit({ locale }: { locale: Locale }) {
       </section>
       <section className="section cream-section">
         <SectionHeading
-          eyebrow={locale === 'fr' ? 'Objectifs' : 'الأهداف'}
-          title={
-            locale === 'fr'
-              ? 'Répondre aux besoins validés, sans supposer.'
-              : 'الاستجابة للحاجيات المعتمدة دون افتراضات.'
-          }
+          eyebrow={tr(locale, 'Objectifs', 'الأهداف', 'Objectives')}
+          title={tr(
+            locale,
+            'Répondre aux besoins validés, sans supposer.',
+            'الاستجابة للحاجيات المعتمدة دون افتراضات.',
+            'Respond to confirmed needs without making assumptions.',
+          )}
         />
         <div className="check-grid">
           {objectives.map((item) => (
@@ -307,12 +343,13 @@ function AnamerLit({ locale }: { locale: Locale }) {
       </section>
       <section className="section">
         <SectionHeading
-          eyebrow={locale === 'fr' ? 'Méthode' : 'المنهجية'}
-          title={
-            locale === 'fr'
-              ? 'Un processus lisible, de la demande au bilan.'
-              : 'مسار واضح من تحديد الحاجة إلى الحصيلة.'
-          }
+          eyebrow={tr(locale, 'Méthode', 'المنهجية', 'Method')}
+          title={tr(
+            locale,
+            'Un processus lisible, de la demande au bilan.',
+            'مسار واضح من تحديد الحاجة إلى الحصيلة.',
+            'A clear process, from identifying the need to reporting outcomes.',
+          )}
         />
         <ol className="process-list">
           {process.map((item, index) => (
@@ -338,9 +375,12 @@ function Terrain({ locale }: { locale: Locale }) {
           <div>
             <Camera size={30} />
             <p>
-              {locale === 'fr'
-                ? 'Photos du terrain à ajouter'
-                : 'صور الملعب ستضاف هنا'}
+              {tr(
+                locale,
+                'Photos du terrain à ajouter',
+                'صور الملعب ستضاف هنا',
+                'Photos of the field will be added here',
+              )}
             </p>
           </div>
           <div />
@@ -349,12 +389,18 @@ function Terrain({ locale }: { locale: Locale }) {
       </section>
       <section className="section cream-section">
         <SectionHeading
-          eyebrow={locale === 'fr' ? 'Suivi du projet' : 'تتبع المشروع'}
-          title={
-            locale === 'fr'
-              ? 'Les informations seront publiées au rythme des validations.'
-              : 'ستنشر المعلومات تدريجياً بعد اعتمادها.'
-          }
+          eyebrow={tr(
+            locale,
+            'Suivi du projet',
+            'تتبع المشروع',
+            'Project updates',
+          )}
+          title={tr(
+            locale,
+            'Les informations seront publiées au rythme des validations.',
+            'ستنشر المعلومات تدريجياً بعد اعتمادها.',
+            'Information will be published as it is verified.',
+          )}
         />
         <div className="field-grid">
           {fields.map((field) => (
@@ -374,26 +420,36 @@ function Terrain({ locale }: { locale: Locale }) {
 }
 
 function News({ locale }: { locale: Locale }) {
-  const categories =
-    locale === 'fr'
-      ? [
-          'Sport',
-          'Éducation',
-          'Culture',
-          'Solidarité',
-          'Environnement',
-          'Projets',
-          'Association',
-        ]
-      : [
-          'الرياضة',
-          'التعليم',
-          'الثقافة',
-          'التضامن',
-          'البيئة',
-          'المشاريع',
-          'الجمعية',
-        ];
+  const categories = tr(
+    locale,
+    [
+      'Sport',
+      'Éducation',
+      'Culture',
+      'Solidarité',
+      'Environnement',
+      'Projets',
+      'Association',
+    ],
+    [
+      'الرياضة',
+      'التعليم',
+      'الثقافة',
+      'التضامن',
+      'البيئة',
+      'المشاريع',
+      'الجمعية',
+    ],
+    [
+      'Sport',
+      'Education',
+      'Culture',
+      'Solidarity',
+      'Environment',
+      'Projects',
+      'Association',
+    ],
+  );
   return (
     <section className="section compact">
       <div className="category-row">
@@ -405,17 +461,29 @@ function News({ locale }: { locale: Locale }) {
         <div className="large-empty">
           <FileText size={34} />
           <h2>
-            {locale === 'fr'
-              ? 'Les premières actualités arrivent bientôt.'
-              : 'ستنشر أولى المستجدات قريباً.'}
+            {tr(
+              locale,
+              'Les premières actualités arrivent bientôt.',
+              'ستنشر أولى المستجدات قريباً.',
+              'The first news stories are coming soon.',
+            )}
           </h2>
           <p>
-            {locale === 'fr'
-              ? 'Chaque publication comportera une date, une catégorie, un résumé et les médias réels associés.'
-              : 'سيتضمن كل منشور تاريخاً وتصنيفاً وملخصاً ووسائط حقيقية مرتبطة به.'}
+            {tr(
+              locale,
+              'Chaque publication comportera une date, une catégorie, un résumé et les médias réels associés.',
+              'سيتضمن كل منشور تاريخاً وتصنيفاً وملخصاً ووسائط حقيقية مرتبطة به.',
+              'Every story will include a date, category, summary and verified media.',
+            )}
           </p>
         </div>
-      ) : null}
+      ) : (
+        <div className="news-grid">
+          {news.map((item) => (
+            <NewsCard detailed item={item} locale={locale} key={item.slug} />
+          ))}
+        </div>
+      )}
     </section>
   );
 }
@@ -440,22 +508,25 @@ function Transparency({ locale }: { locale: Locale }) {
       </section>
       <section className="section cream-section">
         <SectionHeading
-          eyebrow={locale === 'fr' ? 'Documents' : 'الوثائق'}
-          title={
-            locale === 'fr'
-              ? 'Des justificatifs accessibles et classés par projet.'
-              : 'وثائق إثبات متاحة ومرتبة حسب المشروع.'
-          }
+          eyebrow={tr(locale, 'Documents', 'الوثائق', 'Documents')}
+          title={tr(
+            locale,
+            'Des justificatifs accessibles et classés par projet.',
+            'وثائق إثبات متاحة ومرتبة حسب المشروع.',
+            'Accessible supporting documents organised by project.',
+          )}
         />
         <div className="document-grid">
-          {(locale === 'fr'
-            ? [
-                'Contributions',
-                'Dépenses',
-                'Factures & justificatifs',
-                'Rapports',
-              ]
-            : ['المساهمات', 'المصاريف', 'الفواتير ووثائق الإثبات', 'التقارير']
+          {tr(
+            locale,
+            [
+              'Contributions',
+              'Dépenses',
+              'Factures & justificatifs',
+              'Rapports',
+            ],
+            ['المساهمات', 'المصاريف', 'الفواتير ووثائق الإثبات', 'التقارير'],
+            ['Contributions', 'Expenses', 'Invoices & receipts', 'Reports'],
           ).map((label) => (
             <article key={label}>
               <FileText size={21} />
@@ -482,9 +553,12 @@ function Partners({ locale }: { locale: Locale }) {
         <div className="large-empty">
           <Building2Icon />
           <h2>
-            {locale === 'fr'
-              ? 'Aucun logo sans accord confirmé.'
-              : 'لا شعار دون شراكة مؤكدة.'}
+            {tr(
+              locale,
+              'Aucun logo sans accord confirmé.',
+              'لا شعار دون شراكة مؤكدة.',
+              'No logo is displayed without a confirmed agreement.',
+            )}
           </h2>
           <p>{site.pages.partenaires.intro}</p>
           <Link className="button" href={`/${locale}/devenir-partenaire`}>
@@ -517,12 +591,18 @@ function BecomePartner({ locale }: { locale: Locale }) {
       </section>
       <section className="section cream-section">
         <SectionHeading
-          eyebrow={locale === 'fr' ? 'Parcours partenaire' : 'مسار الشراكة'}
-          title={
-            locale === 'fr'
-              ? 'Un cadre simple, précis et documenté.'
-              : 'إطار بسيط ودقيق وموثق.'
-          }
+          eyebrow={tr(
+            locale,
+            'Parcours partenaire',
+            'مسار الشراكة',
+            'Partner journey',
+          )}
+          title={tr(
+            locale,
+            'Un cadre simple, précis et documenté.',
+            'إطار بسيط ودقيق وموثق.',
+            'A simple, precise and documented framework.',
+          )}
         />
         <ol className="process-list">
           {(d.partnerProcess as string[]).map((item, index) => (
@@ -560,14 +640,20 @@ function Support({ locale }: { locale: Locale }) {
         <ShieldCheck size={30} />
         <div>
           <h2>
-            {locale === 'fr'
-              ? 'Aucun paiement en ligne n’est actif.'
-              : 'لا توجد حالياً أي وسيلة دفع إلكترونية مفعلة.'}
+            {tr(
+              locale,
+              'Aucun paiement en ligne n’est actif.',
+              'لا توجد حالياً أي وسيلة دفع إلكترونية مفعلة.',
+              'No online payment method is currently active.',
+            )}
           </h2>
           <p>
-            {locale === 'fr'
-              ? 'L’architecture pourra accueillir CMI, Stripe ou PayPal après validation des comptes officiels, des mentions légales et du processus comptable.'
-              : 'يمكن للمنصة استقبال CMI أو Stripe أو PayPal لاحقاً، بعد اعتماد الحسابات الرسمية والبيانات القانونية والمسار المحاسبي.'}
+            {tr(
+              locale,
+              'L’architecture pourra accueillir CMI, Stripe ou PayPal après validation des comptes officiels, des mentions légales et du processus comptable.',
+              'يمكن للمنصة استقبال CMI أو Stripe أو PayPal لاحقاً، بعد اعتماد الحسابات الرسمية والبيانات القانونية والمسار المحاسبي.',
+              'The platform can support CMI, Stripe or PayPal after official accounts, legal notices and accounting procedures have been approved.',
+            )}
           </p>
         </div>
       </section>
@@ -579,23 +665,20 @@ function Contact({ locale }: { locale: Locale }) {
   const contactItems = [
     ...contactDetails.phones.map((phone, index) => ({
       icon: Phone,
-      label: locale === 'fr' ? `Téléphone ${index + 1}` : `الهاتف ${index + 1}`,
+      label: tr(
+        locale,
+        `Téléphone ${index + 1}`,
+        `الهاتف ${index + 1}`,
+        `Phone ${index + 1}`,
+      ),
       value: phone.display,
       href: phone.href,
       external: false,
       ltr: true,
     })),
     {
-      icon: Mail,
-      label: locale === 'fr' ? 'E-mail' : 'البريد الإلكتروني',
-      value: contactDetails.email.display,
-      href: contactDetails.email.href,
-      external: false,
-      ltr: true,
-    },
-    {
       icon: FacebookIcon,
-      label: locale === 'fr' ? 'Page Facebook' : 'صفحة فيسبوك',
+      label: tr(locale, 'Page Facebook', 'صفحة فيسبوك', 'Facebook page'),
       value: contactDetails.facebook.display,
       href: contactDetails.facebook.href,
       external: true,
@@ -603,8 +686,18 @@ function Contact({ locale }: { locale: Locale }) {
     },
     {
       icon: WhatsAppIcon,
-      label: locale === 'fr' ? 'Communauté WhatsApp' : 'مجتمع واتساب',
-      value: locale === 'fr' ? 'Rejoindre la communauté' : 'انضم إلى المجتمع',
+      label: tr(
+        locale,
+        'Communauté WhatsApp',
+        'مجتمع واتساب',
+        'WhatsApp community',
+      ),
+      value: tr(
+        locale,
+        'Rejoindre la communauté',
+        'انضم إلى المجتمع',
+        'Join the community',
+      ),
       href: contactDetails.whatsapp.href,
       external: true,
       ltr: false,
@@ -635,9 +728,12 @@ function Contact({ locale }: { locale: Locale }) {
             )}
           </div>
           <p className="privacy-note">
-            {locale === 'fr'
-              ? 'Le formulaire prépare votre message pour un envoi à l’adresse officielle de l’association.'
-              : 'يُعِدّ النموذج رسالتك لإرسالها إلى البريد الإلكتروني الرسمي للجمعية.'}
+            {tr(
+              locale,
+              'Le formulaire prépare votre message pour un envoi à l’adresse officielle de l’association.',
+              'يُعِدّ النموذج رسالتك لإرسالها إلى البريد الإلكتروني الرسمي للجمعية.',
+              'The form prepares your message for delivery to the association’s official inbox.',
+            )}
           </p>
         </div>
         <ContactForm locale={locale} />
