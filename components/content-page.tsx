@@ -5,7 +5,6 @@ import {
   Banknote,
   BookOpen,
   Boxes,
-  Camera,
   Check,
   FileText,
   HandHeart,
@@ -367,24 +366,186 @@ function AnamerLit({ locale }: { locale: Locale }) {
 function Terrain({ locale }: { locale: Locale }) {
   const d = pageDetails[locale];
   const fields = d.terrainFields as string[];
+  const values = d.terrainValues as string[];
   const site = siteCopy[locale];
+  const stadiumPhases = [
+    {
+      number: '01',
+      label: tr(
+        locale,
+        'Avant les travaux',
+        'قبل انطلاق الأشغال',
+        'Before the work',
+      ),
+      description: tr(
+        locale,
+        'Les relevés topographiques ont permis de préparer le chantier et de définir la surface à aménager.',
+        'مكّنت عمليات المسح الطبوغرافي من إعداد الورش وتحديد المساحة المراد تهيئتها.',
+        'Topographic surveys prepared the site and defined the area to be developed.',
+      ),
+      photos: [
+        {
+          src: '/images/terrain-anamer/01-releve-topographique.jpg',
+          caption: tr(
+            locale,
+            'Relevé topographique du terrain',
+            'المسح الطبوغرافي للملعب',
+            'Topographic survey of the field',
+          ),
+        },
+        {
+          src: '/images/terrain-anamer/02-mesure-terrain.jpg',
+          caption: tr(
+            locale,
+            'Repérage et mesure de la surface',
+            'تحديد وقياس مساحة الملعب',
+            'Marking and measuring the site',
+          ),
+        },
+      ],
+    },
+    {
+      number: '02',
+      label: tr(
+        locale,
+        'Pendant les travaux',
+        'أثناء الأشغال',
+        'Work in progress',
+      ),
+      description: tr(
+        locale,
+        'Préparation du sol, terrassement, apport de matériaux et nivellement progressif du terrain.',
+        'تهيئة الأرضية وأشغال الحفر وتوريد المواد والتسوية التدريجية للملعب.',
+        'Ground preparation, earthworks, material delivery and progressive levelling of the field.',
+      ),
+      photos: [
+        {
+          src: '/images/terrain-anamer/03-preparation-sol.jpg',
+          caption: tr(
+            locale,
+            'Préparation du sol',
+            'تهيئة أرضية الملعب',
+            'Ground preparation',
+          ),
+        },
+        {
+          src: '/images/terrain-anamer/04-terrassement-initial.jpg',
+          caption: tr(
+            locale,
+            'Premières opérations de terrassement',
+            'بداية أشغال التسوية',
+            'Initial earthworks',
+          ),
+        },
+        {
+          src: '/images/terrain-anamer/05-nivellement.jpg',
+          caption: tr(
+            locale,
+            'Nivellement mécanique de la surface',
+            'التسوية الآلية لأرضية الملعب',
+            'Mechanical levelling of the surface',
+          ),
+        },
+        {
+          src: '/images/terrain-anamer/06-apport-materiaux.jpg',
+          caption: tr(
+            locale,
+            'Apport et répartition des matériaux',
+            'توريد المواد وتوزيعها',
+            'Delivery and spreading of materials',
+          ),
+        },
+      ],
+    },
+    {
+      number: '03',
+      label: tr(
+        locale,
+        'Après le nivellement',
+        'بعد التسوية',
+        'After levelling',
+      ),
+      description: tr(
+        locale,
+        'Deux vues de la surface obtenue après les opérations de terrassement et de nivellement.',
+        'صورتان لأرضية الملعب بعد انتهاء أشغال الحفر والتسوية.',
+        'Two views of the surface after the earthworks and levelling operations.',
+      ),
+      photos: [
+        {
+          src: '/images/terrain-anamer/07-terrain-nivele.jpg',
+          caption: tr(
+            locale,
+            'Surface du terrain après nivellement',
+            'أرضية الملعب بعد التسوية',
+            'The field surface after levelling',
+          ),
+        },
+        {
+          src: '/images/terrain-anamer/08-terrain-nivele-panorama.jpg',
+          caption: tr(
+            locale,
+            'Vue panoramique du terrain aménagé',
+            'منظر بانورامي للملعب بعد التهيئة',
+            'Panoramic view of the prepared field',
+          ),
+        },
+      ],
+    },
+  ];
   return (
     <>
-      <section className="section compact">
-        <div className="gallery-placeholder">
-          <div>
-            <Camera size={30} />
-            <p>
-              {tr(
-                locale,
-                'Photos du terrain à ajouter',
-                'صور الملعب ستضاف هنا',
-                'Photos of the field will be added here',
-              )}
-            </p>
-          </div>
-          <div />
-          <div />
+      <section className="section compact stadium-gallery-section">
+        <SectionHeading
+          eyebrow={tr(
+            locale,
+            'Le chantier en images',
+            'صور مراحل الأشغال',
+            'Work in pictures',
+          )}
+          title={tr(
+            locale,
+            'Le stade d’Anamer, avant, pendant et après les travaux.',
+            'ملعب أنامر قبل الأشغال وأثناءها وبعدها.',
+            'Anamer stadium before, during and after the work.',
+          )}
+          intro={tr(
+            locale,
+            'Huit photographies documentent les principales étapes de préparation et de nivellement du terrain.',
+            'توثق ثماني صور المراحل الرئيسية لتهيئة أرضية الملعب وتسويتها.',
+            'Eight photographs document the main stages of preparing and levelling the field.',
+          )}
+        />
+        <div className="stadium-timeline">
+          {stadiumPhases.map((phase) => (
+            <article className="stadium-phase" key={phase.number}>
+              <header className="stadium-phase-header">
+                <span>{phase.number}</span>
+                <div>
+                  <h2>{phase.label}</h2>
+                  <p>{phase.description}</p>
+                </div>
+              </header>
+              <div className="stadium-photo-grid">
+                {phase.photos.map((photo, index) => (
+                  <figure className="stadium-photo" key={photo.src}>
+                    <Image
+                      src={photo.src}
+                      alt={photo.caption}
+                      fill
+                      sizes="(max-width: 800px) 100vw, 50vw"
+                    />
+                    <figcaption>
+                      <span>
+                        {phase.number}.{index + 1}
+                      </span>
+                      {photo.caption}
+                    </figcaption>
+                  </figure>
+                ))}
+              </div>
+            </article>
+          ))}
         </div>
       </section>
       <section className="section cream-section">
@@ -403,13 +564,21 @@ function Terrain({ locale }: { locale: Locale }) {
           )}
         />
         <div className="field-grid">
-          {fields.map((field) => (
+          {fields.map((field, index) => (
             <article key={field}>
               <span>{field}</span>
-              <strong>{site.toComplete}</strong>
+              <strong>{values[index]}</strong>
             </article>
           ))}
         </div>
+        <p className="field-estimate-note">
+          {tr(
+            locale,
+            'Estimation indicative : le budget total suppose que les 120 000 DH correspondent aux 11 % restants. Le montant final et le calendrier seront confirmés après validation.',
+            'تقدير استرشادي: تفترض الميزانية الإجمالية أن مبلغ 120,000 درهم يمثل نسبة 11٪ المتبقية. وسيتم تأكيد المبلغ النهائي والجدول الزمني بعد المصادقة.',
+            'Indicative estimate: the total budget assumes that MAD 120,000 represents the remaining 11%. The final amount and timeline will be confirmed after validation.',
+          )}
+        </p>
         <Link className="button" href={`/${locale}/soutenir`}>
           {site.support}
           <ArrowUpRight size={18} />

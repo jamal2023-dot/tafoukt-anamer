@@ -469,6 +469,14 @@ export const pageDetails = {
       'Partenaires',
       'Calendrier',
     ],
+    terrainValues: [
+      '89 %',
+      'Nivellement réalisé ; travaux de finition restants',
+      '120 000 DH pour terminer les travaux',
+      'Environ 1,09 M DH au total (estimation)',
+      'Aucun partenaire pour l’instant',
+      '2 à 3 mois après mobilisation des fonds (estimation)',
+    ],
     supportOptions: [
       'Contribution financière',
       'Contribution matérielle',
@@ -529,6 +537,14 @@ export const pageDetails = {
       'الميزانية',
       'الشركاء',
       'الجدول الزمني',
+    ],
+    terrainValues: [
+      '89٪',
+      'تمت التسوية؛ وتبقت أشغال التشطيب',
+      '120,000 درهم لاستكمال الأشغال',
+      'حوالي 1.09 مليون درهم إجمالاً (تقدير)',
+      'لا يوجد شركاء حالياً',
+      'من شهرين إلى ثلاثة أشهر بعد تعبئة التمويل (تقدير)',
     ],
     supportOptions: [
       'مساهمة مالية',
@@ -591,6 +607,14 @@ export const pageDetails = {
       'Budget',
       'Partners',
       'Timeline',
+    ],
+    terrainValues: [
+      '89%',
+      'Levelling completed; finishing work remains',
+      'MAD 120,000 to complete the work',
+      'Approximately MAD 1.09M total (estimate)',
+      'No partners at present',
+      '2–3 months after funding is secured (estimate)',
     ],
     supportOptions: [
       'Financial contribution',

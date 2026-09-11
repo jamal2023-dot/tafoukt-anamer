@@ -1355,7 +1355,8 @@ select {
   min-height: 720px;
   margin-top: 62px;
 }
-.school-photo {
+.school-photo,
+.stadium-photo {
   position: relative;
   min-width: 0;
   margin: 0;
@@ -1365,14 +1366,17 @@ select {
 .school-photo-1 {
   grid-row: 1 / -1;
 }
-.school-photo img {
+.school-photo img,
+.stadium-photo img {
   object-fit: cover;
   transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
 }
-.school-photo:hover img {
+.school-photo:hover img,
+.stadium-photo:hover img {
   transform: scale(1.025);
 }
-.school-photo figcaption {
+.school-photo figcaption,
+.stadium-photo figcaption {
   position: absolute;
   right: 18px;
   bottom: 18px;
@@ -1390,14 +1394,16 @@ select {
   line-height: 1.4;
   backdrop-filter: blur(10px);
 }
-.school-photo figcaption span {
+.school-photo figcaption span,
+.stadium-photo figcaption span {
   padding-right: 11px;
   border-right: 1px solid rgba(255, 255, 255, 0.25);
   color: var(--gold);
   font-size: 9px;
   letter-spacing: 0.08em;
 }
-.locale-ar .school-photo figcaption span {
+.locale-ar .school-photo figcaption span,
+.locale-ar .stadium-photo figcaption span {
   padding-right: 0;
   padding-left: 11px;
   border-right: 0;
@@ -1478,50 +1484,58 @@ select {
   font-size: 14px;
   font-weight: 750;
 }
-.gallery-placeholder {
+.stadium-gallery-section {
+  border-top: 1px solid var(--line);
+}
+.stadium-timeline {
+  margin-top: 62px;
+  border-top: 1px solid var(--line);
+}
+.stadium-phase {
+  padding: 44px 0 58px;
+  border-bottom: 1px solid var(--line);
+}
+.stadium-phase-header {
   display: grid;
-  grid-template-columns: 2fr 1fr;
-  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 64px minmax(0, 1fr);
+  gap: 22px;
+  align-items: start;
+  margin-bottom: 30px;
+}
+.stadium-phase-header > span {
+  padding-top: 8px;
+  color: var(--gold-deep);
+  font-size: 11px;
+  font-weight: 850;
+  letter-spacing: 0.12em;
+}
+.stadium-phase-header h2 {
+  margin: 0;
+  font-family: var(--font-newsreader), var(--font-arabic), Georgia, serif;
+  font-size: clamp(32px, 4vw, 50px);
+  font-weight: 580;
+  line-height: 1.05;
+  letter-spacing: -0.035em;
+}
+.stadium-phase-header p {
+  max-width: 760px;
+  margin: 12px 0 0;
+  color: var(--muted);
+  line-height: 1.75;
+}
+.stadium-photo-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 14px;
-  min-height: 520px;
 }
-.gallery-placeholder > div {
-  position: relative;
-  display: grid;
-  place-items: center;
-  border-radius: 0;
-  overflow: hidden;
-  background: #e9e5d9;
-}
-.gallery-placeholder > div:first-child {
-  grid-row: 1/-1;
-  background: var(--navy);
-  color: white;
-}
-.gallery-placeholder > div::before {
-  content: '';
-  position: absolute;
-  width: 180px;
-  height: 180px;
-  border: 1px solid rgba(16, 26, 61, 0.14);
-  transform: rotate(45deg);
-}
-.gallery-placeholder > div:first-child::before {
-  border-color: rgba(255, 255, 255, 0.2);
-}
-.gallery-placeholder > div:first-child p {
-  position: relative;
-  margin: 14px 0 0;
-  color: rgba(255, 255, 255, 0.65);
-}
-.gallery-placeholder svg {
-  color: var(--gold);
+.stadium-photo {
+  aspect-ratio: 16 / 10;
 }
 .field-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 14px;
-  margin: 50px 0 32px;
+  margin: 50px 0 22px;
 }
 .field-grid article {
   min-height: 150px;
@@ -1539,6 +1553,14 @@ select {
 .field-grid strong {
   margin-top: auto;
   font-size: 18px;
+  line-height: 1.4;
+}
+.field-estimate-note {
+  max-width: 860px;
+  margin: 0 0 32px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.75;
 }
 .category-row {
   display: flex;
@@ -1965,14 +1987,6 @@ select {
   .footer-contact {
     grid-column: auto;
   }
-  .gallery-placeholder {
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 2fr 1fr;
-  }
-  .gallery-placeholder > div:first-child {
-    grid-column: 1/-1;
-    grid-row: auto;
-  }
 }
 @media (max-width: 640px) {
   .site-header {
@@ -2133,8 +2147,26 @@ select {
     grid-row: auto;
     aspect-ratio: 4 / 3;
   }
-  .gallery-placeholder {
-    min-height: 430px;
+  .stadium-gallery-section {
+    padding-top: 24px;
+  }
+  .stadium-timeline {
+    margin-top: 42px;
+  }
+  .stadium-phase {
+    padding: 34px 0 42px;
+  }
+  .stadium-phase-header {
+    grid-template-columns: 42px minmax(0, 1fr);
+    gap: 12px;
+    margin-bottom: 22px;
+  }
+  .stadium-photo-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .stadium-photo {
+    aspect-ratio: 4 / 3;
   }
   .large-empty {
     min-height: 380px;
