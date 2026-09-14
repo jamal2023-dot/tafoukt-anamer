@@ -69,7 +69,7 @@ export const siteCopy = {
         eyebrow: 'Projet éducation',
         title: 'Anamer Lit — أنامر تقرأ',
         intro:
-          'Un programme de soutien à l’éducation et à l’égalité des chances, porté par la signature من أنامر… لأنامر.',
+          'La première phase du programme de soutien scolaire 2026 a atteint son objectif : 40 élèves accompagnés et 95 livres prévus.',
       },
       'terrain-anamer-bouchfoud': {
         eyebrow: 'Projet sport',
@@ -102,10 +102,10 @@ export const siteCopy = {
           'Entreprises, fondations et institutions peuvent soutenir une action précise, un programme ou une compétence utile.',
       },
       soutenir: {
-        eyebrow: 'Nous soutenir',
-        title: 'Chaque contribution peut devenir une action concrète.',
+        eyebrow: 'Phase 1 clôturée',
+        title: 'Merci : l’objectif de la première phase est atteint.',
         intro:
-          'Choisissez la forme d’engagement qui vous correspond. Aucune solution de paiement n’est activée à ce stade.',
+          'Les contributions sont temporairement suspendues pendant les achats, la distribution et la préparation du bilan détaillé.',
       },
       contact: {
         eyebrow: 'Contact',
@@ -171,7 +171,8 @@ export const siteCopy = {
       'anamer-lit': {
         eyebrow: 'مشروع تعليمي',
         title: 'أنامر تقرأ — Anamer Lit',
-        intro: 'برنامج لدعم التعليم وتكافؤ الفرص، بشعار من أنامر… لأنامر.',
+        intro:
+          'بلغت المرحلة الأولى من برنامج الدعم المدرسي لسنة 2026 هدفها: 40 تلميذاً مستفيداً و95 كتاباً مبرمجاً.',
       },
       'terrain-anamer-bouchfoud': {
         eyebrow: 'مشروع رياضي',
@@ -204,10 +205,10 @@ export const siteCopy = {
           'يمكن للشركات والمؤسسات دعم مبادرة محددة أو برنامج أو خبرة يحتاجها المشروع.',
       },
       soutenir: {
-        eyebrow: 'ادعمنا',
-        title: 'كل مساهمة يمكن أن تتحول إلى عمل ملموس.',
+        eyebrow: 'إغلاق المرحلة الأولى',
+        title: 'شكراً لكم: تم بلوغ هدف المرحلة الأولى.',
         intro:
-          'اختر صيغة المشاركة المناسبة لك. لا توجد حالياً أي وسيلة دفع مفعلة.',
+          'تم تعليق المساهمات مؤقتاً خلال المشتريات والتوزيع وإعداد الحصيلة المفصلة.',
       },
       contact: {
         eyebrow: 'اتصل بنا',
@@ -273,7 +274,7 @@ export const siteCopy = {
         eyebrow: 'Education project',
         title: 'Anamer Reads — أنامر تقرأ',
         intro:
-          'A programme supporting education and equal opportunity, guided by the motto من أنامر… لأنامر.',
+          'Phase One of the 2026 school support programme reached its target: 40 pupils supported and 95 books planned.',
       },
       'terrain-anamer-bouchfoud': {
         eyebrow: 'Sport project',
@@ -306,10 +307,10 @@ export const siteCopy = {
           'Companies, foundations and institutions can support a specific initiative, programme or useful skill.',
       },
       soutenir: {
-        eyebrow: 'Support us',
-        title: 'Every contribution can become practical action.',
+        eyebrow: 'Phase 1 closed',
+        title: 'Thank you: the Phase One target has been reached.',
         intro:
-          'Choose the form of support that suits you. No online payment method is currently active.',
+          'Contributions are temporarily suspended while purchases, distribution and the detailed report are completed.',
       },
       contact: {
         eyebrow: 'Contact',
@@ -440,9 +441,9 @@ export const pageDetails = {
       'Nous croyons que le développement commence par les habitants de la région et que le travail sincère devient, avec le temps, un impact.',
     anamerContext:
       'La filiale scolaire d’Anamer a contribué pendant plusieurs générations à la formation des enfants de la région. Certains anciens élèves sont aujourd’hui ingénieurs, médecins, enseignants, entrepreneurs et professionnels dans différents secteurs. Une nouvelle génération y poursuit aujourd’hui sa scolarité.',
-    pupils: 'Environ 24 élèves',
+    pupils: '40 élèves',
     pupilsNote:
-      'Nombre définitif à confirmer avec l’administration de l’établissement.',
+      '23 élèves de la filiale d’Anamer et 17 élèves d’Anamer scolarisés en 5e et 6e année à l’école communautaire d’Ifrane.',
     anamerObjectives: [
       'Fournitures et cartables',
       'Matériel de géométrie et de dessin',
@@ -468,6 +469,14 @@ export const pageDetails = {
       'Budget',
       'Partenaires',
       'Calendrier',
+    ],
+    terrainValues: [
+      '89 %',
+      'Nivellement réalisé ; travaux de finition restants',
+      '120 000 DH pour terminer les travaux',
+      'Environ 1,09 M DH au total (estimation)',
+      'Aucun partenaire pour l’instant',
+      '2 à 3 mois après mobilisation des fonds (estimation)',
     ],
     supportOptions: [
       'Contribution financière',
@@ -502,8 +511,9 @@ export const pageDetails = {
       'نؤمن بأن التنمية تبدأ من سكان المنطقة، وأن العمل الصادق يتحول مع الوقت إلى أثر.',
     anamerContext:
       'ساهمت فرعية أنامر المدرسية عبر أجيال في تعليم أطفال المنطقة. وأصبح بعض تلامذتها السابقين اليوم مهندسين وأطباء ومدرسين ومقاولين ومهنيين في قطاعات مختلفة. ويواصل جيل جديد دراسته فيها اليوم.',
-    pupils: 'حوالي 24 تلميذاً',
-    pupilsNote: 'العدد النهائي ينتظر تأكيد إدارة المؤسسة.',
+    pupils: '40 تلميذاً',
+    pupilsNote:
+      '23 تلميذاً بفرعية أنامر و17 تلميذاً من أنامر بالسنتين الخامسة والسادسة بالمدرسة الجماعاتية بإفران.',
     anamerObjectives: [
       'اللوازم والمحافظ المدرسية',
       'أدوات الهندسة والرسم',
@@ -529,6 +539,14 @@ export const pageDetails = {
       'الميزانية',
       'الشركاء',
       'الجدول الزمني',
+    ],
+    terrainValues: [
+      '89٪',
+      'تمت التسوية؛ وتبقت أشغال التشطيب',
+      '120,000 درهم لاستكمال الأشغال',
+      'حوالي 1.09 مليون درهم إجمالاً (تقدير)',
+      'لا يوجد شركاء حالياً',
+      'من شهرين إلى ثلاثة أشهر بعد تعبئة التمويل (تقدير)',
     ],
     supportOptions: [
       'مساهمة مالية',
@@ -563,9 +581,9 @@ export const pageDetails = {
       'We believe development begins with the people of the region, and that sincere work becomes meaningful impact over time.',
     anamerContext:
       'For generations, the Anamer school branch has helped educate children from the region. Some former pupils are now engineers, doctors, teachers, entrepreneurs and professionals in many fields. A new generation continues its education there today.',
-    pupils: 'Around 24 pupils',
+    pupils: '40 pupils',
     pupilsNote:
-      'The final number must be confirmed by the school administration.',
+      '23 pupils at the Anamer school branch and 17 Anamer pupils in Years 5 and 6 at the Ifrane community school.',
     anamerObjectives: [
       'School supplies and backpacks',
       'Geometry and drawing materials',
@@ -591,6 +609,14 @@ export const pageDetails = {
       'Budget',
       'Partners',
       'Timeline',
+    ],
+    terrainValues: [
+      '89%',
+      'Levelling completed; finishing work remains',
+      'MAD 120,000 to complete the work',
+      'Approximately MAD 1.09M total (estimate)',
+      'No partners at present',
+      '2–3 months after funding is secured (estimate)',
     ],
     supportOptions: [
       'Financial contribution',

@@ -34,6 +34,27 @@ export type NewsItem = {
 // Publier une actualité uniquement avec un contenu, une date et des médias vérifiés.
 export const news: NewsItem[] = [
   {
+    slug: 'anamer-lit-resultats-phase-1',
+    title: {
+      fr: 'Anamer Lit : objectif atteint pour la première phase',
+      ar: 'أنامر تقرأ: تم بلوغ هدف المرحلة الأولى',
+      en: 'Anamer Reads: Phase One target reached',
+    },
+    summary: {
+      fr: '9 579 DH de contributions vérifiées ont été mobilisés pour un objectif de 7 740 DH, au bénéfice de 40 élèves et d’une première dotation de 95 livres.',
+      ar: 'تم جمع 9,579 درهماً من المساهمات المؤكدة مقابل هدف قدره 7,740 درهماً لفائدة 40 تلميذاً ودفعة أولى من 95 كتاباً.',
+      en: 'MAD 9,579 in verified contributions was mobilised against a MAD 7,740 target, supporting 40 pupils and a first allocation of 95 books.',
+    },
+    content: {
+      fr: 'Grâce à la mobilisation des habitants d’Anamer, de ses enfants au Maroc et à l’étranger, ainsi que de toutes les personnes solidaires, la première phase du programme de soutien scolaire 2026 a atteint et dépassé son objectif. La collecte est temporairement suspendue. Les prochaines étapes sont l’achat, la distribution puis la publication d’un bilan financier détaillé avec les justificatifs. Merci à chaque contributrice, contributeur et relais de cette initiative.',
+      ar: 'بفضل تعبئة ساكنة أنامر وأبنائها داخل المغرب وخارجه، وكل المتضامنين، تم بلوغ الهدف المالي للمرحلة الأولى من برنامج الدعم المدرسي لسنة 2026 وتجاوزه. وقد تم تعليق المساهمات مؤقتاً. وستشمل الخطوات المقبلة الاقتناء والتوزيع ثم نشر حصيلة مالية مفصلة مرفقة بالإثباتات. شكراً لكل من ساهم ودعم ونشر هذه المبادرة.',
+      en: 'Thanks to the mobilisation of Anamer residents, the community in Morocco and abroad, and everyone who offered support, Phase One of the 2026 school support programme reached and exceeded its target. Contributions are temporarily suspended. The next steps are purchasing, distribution, and publication of a detailed financial report with supporting documents. Thank you to everyone who contributed, supported, or shared the initiative.',
+    },
+    date: '2026-09-14',
+    category: 'Éducation',
+    image: '/images/anamer-lit/phase-1-results.png',
+  },
+  {
     slug: 'reprise-travaux-terrain-bouchfoud',
     title: {
       fr: 'Reprise des travaux au terrain de Bouchfoud',

@@ -12,21 +12,21 @@ export type TeamMember = {
 export const team: TeamMember[] = [
   {
     id: 'president-ibrahim-ouhmid',
-    name: { fr: 'Brahim OUHMID', ar: 'احميد ابراهيم', en: 'Ibrahim Ouhmid' },
+    name: { fr: 'Brahim OUHMID', ar: 'احميد ابراهيم', en: 'Brahim OUHMID' },
     role: { fr: 'Président', ar: 'الرئيس', en: 'President' },
     image: '/images/team/ibrahim-ouhmid.png',
     imagePosition: 'center 28%',
   },
   {
     id: 'vice-president-hassan-karami',
-    name: { fr: 'Hassan KARAMI', ar: 'كرامي حسن', en: 'Hassan Karami' },
+    name: { fr: 'Hassan KARAMI', ar: 'كرامي حسن', en: 'Hassan KARAMI' },
     role: { fr: 'Vice-président', ar: 'نائب الرئيس', en: 'Vice-president' },
     image: '/images/team/hassan-karami.png',
     imagePosition: 'center 32%',
   },
   {
     id: 'treasurer-rachid-ankmar',
-    name: { fr: 'Rachid ANOUGMAR', ar: 'انكمار رشيد', en: 'Rachid Ankmar' },
+    name: { fr: 'Rachid ANOUGMAR', ar: 'انكمار رشيد', en: 'Rachid ANOUGMAR' },
     role: { fr: 'Trésorier', ar: 'الامين', en: 'Treasurer' },
     image: '/images/team/rachid-ankmar.png',
     imagePosition: 'center top',
@@ -37,7 +37,7 @@ export const team: TeamMember[] = [
     name: {
       fr: 'Abdellah KARAMI',
       ar: 'كرامي عبد الله',
-      en: 'Abdellah Karami',
+      en: 'Abdellah KARAMI',
     },
     role: {
       fr: 'Trésorier adjoint',
@@ -52,7 +52,7 @@ export const team: TeamMember[] = [
     name: {
       fr: 'Lahoucine LOTFI',
       ar: 'لطفي الحسين',
-      en: 'El Houssine Lotfi',
+      en: 'Lahoucine LOTFI',
     },
     role: { fr: 'Secrétaire', ar: 'الكاتب', en: 'Secretary' },
     image: '/images/team/el-houssine-lotfi.png',
@@ -60,7 +60,7 @@ export const team: TeamMember[] = [
   },
   {
     id: 'assistant-secretary-jamal-karami',
-    name: { fr: 'Jamal KARAMI', ar: 'كرامي جمال', en: 'Jamal Karami' },
+    name: { fr: 'Jamal KARAMI', ar: 'كرامي جمال', en: 'Jamal KARAMI' },
     role: {
       fr: 'Secrétaire adjoint',
       ar: 'نائب الكاتب',
@@ -73,7 +73,7 @@ export const team: TeamMember[] = [
     name: {
       fr: 'Abdellah KARAMI',
       ar: 'كرامي عبد الله',
-      en: 'Abdellah Karami',
+      en: 'Abdellah KARAMI',
     },
     role: { fr: 'Conseiller', ar: 'المستشار', en: 'Advisor' },
     image: '/images/team/abdellah-karami-advisor.png',

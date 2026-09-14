@@ -9,18 +9,20 @@ import {
 import {
   ArrowRight,
   ArrowUpRight,
-  BarChart3,
-  Building2,
-  FileCheck2,
+  Banknote,
+  BookOpen,
+  CircleCheck,
   Landmark,
   MapPin,
+  ShieldCheck,
+  Target,
   Users,
 } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { actionPoles } from '@/data/actions';
+import { phaseOne, phaseOneCopy } from '@/data/anamer-lit';
 import { homeCopy, siteCopy } from '@/data/content';
-import { impact } from '@/data/impact';
 import { news } from '@/data/news';
 import { partners } from '@/data/partners';
 import { projects } from '@/data/projects';
@@ -56,6 +58,7 @@ function tr(locale: Locale, fr: string, ar: string, en: string) {
 export function HomePage({ locale }: { locale: Locale }) {
   const home = homeCopy[locale];
   const site = siteCopy[locale];
+  const phase = phaseOneCopy[locale];
 
   return (
     <MotionConfig reducedMotion="user">
@@ -258,7 +261,8 @@ export function HomePage({ locale }: { locale: Locale }) {
         </motion.section>
 
         <motion.section
-          className="section transparency-preview"
+          className="section transparency-preview phase-home"
+          id="phase-one-results"
           initial="hidden"
           whileInView="visible"
           viewport={viewport}
@@ -266,24 +270,44 @@ export function HomePage({ locale }: { locale: Locale }) {
         >
           <motion.div variants={reveal}>
             <SectionHeading
-              eyebrow={home.impactEyebrow}
-              title={home.impactTitle}
-              intro={home.impactIntro}
+              eyebrow={phase.badge as string}
+              title={phase.headline as string}
+              intro={phase.intro as string}
             />
           </motion.div>
-          <div className="impact-grid">
-            {impact.map((item, index) => {
-              const Icon = [Building2, FileCheck2, BarChart3, Landmark][index];
+          <div className="impact-grid phase-home-kpis">
+            {[
+              [phase.target, '7 740 DH', Target],
+              [phase.raised, '9 579 DH', Banknote],
+              [phase.surplus, '1 839 DH', ShieldCheck],
+              [phase.pupils, String(phaseOne.pupils), Users],
+              [phase.books, String(phaseOne.books), BookOpen],
+            ].map(([label, value, Icon]) => {
               return (
-                <motion.article key={item.label.fr} variants={reveal}>
+                <motion.article key={label as string} variants={reveal}>
                   <Icon size={21} />
-                  <p>{item.label[locale]}</p>
-                  <strong>{item.value[locale]}</strong>
+                  <p>{label as string}</p>
+                  <strong>{value as string}</strong>
                 </motion.article>
               );
             })}
           </div>
-          <motion.div variants={reveal}>
+          <motion.div className="home-progress" variants={reveal}>
+            <div>
+              <CircleCheck size={19} />
+              <strong>{phase.status as string}</strong>
+              <span>{phaseOne.progress}%</span>
+            </div>
+            <div className="progress-track" aria-hidden="true">
+              <span />
+            </div>
+            <p>{phase.surplusNote as string}</p>
+          </motion.div>
+          <motion.div className="phase-home-actions" variants={reveal}>
+            <Link className="button button-gold" href={`/${locale}/anamer-lit`}>
+              {phase.follow as string}
+              <ArrowUpRight size={18} />
+            </Link>
             <Link
               className="button button-outline"
               href={`/${locale}/transparence`}
