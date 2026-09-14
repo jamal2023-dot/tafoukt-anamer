@@ -24,14 +24,13 @@ import { impact } from '@/data/impact';
 import { news } from '@/data/news';
 import { partnerLevels, partners } from '@/data/partners';
 import { projects } from '@/data/projects';
-import { team } from '@/data/team';
 import type { Locale, PageSlug } from '@/types';
 import { ActionIcon } from './action-icon';
 import { ContactForm } from './contact-form';
 import { NewsCard } from './news-card';
+import { OrganizationChart } from './organization-chart';
 import { SectionHeading } from './section-heading';
 import { FacebookIcon, WhatsAppIcon } from './social-icons';
-import { TeamPortrait } from './team-portrait';
 
 function tr<T>(locale: Locale, fr: T, ar: T, en: T): T {
   if (locale === 'ar') return ar;
@@ -132,18 +131,7 @@ function Association({ locale }: { locale: Locale }) {
             'Board composition provided by the association.',
           )}
         />
-        <div className="team-grid bureau-grid">
-          {team.map((member, index) => (
-            <article key={member.id}>
-              <span>0{index + 1}</span>
-              <TeamPortrait member={member} />
-              <div>
-                <h3>{member.name[locale]}</h3>
-                <p>{member.role[locale]}</p>
-              </div>
-            </article>
-          ))}
-        </div>
+        <OrganizationChart locale={locale} />
       </section>
     </>
   );
