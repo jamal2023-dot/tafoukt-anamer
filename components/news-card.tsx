@@ -1,4 +1,5 @@
 import { ArrowUpRight } from 'lucide-react';
+import Image from 'next/image';
 import { newsCategoryLabels, type NewsItem } from '@/data/news';
 import type { Locale } from '@/types';
 
@@ -32,6 +33,16 @@ export function NewsCard({
 
   return (
     <article className="news-card">
+      {item.image ? (
+        <div className="news-card-image">
+          <Image
+            src={item.image}
+            alt={item.title[locale]}
+            fill
+            sizes="(max-width: 800px) 100vw, 50vw"
+          />
+        </div>
+      ) : null}
       <div className="news-meta">
         <span>{newsCategoryLabels[item.category][locale]}</span>
         <time dateTime={item.date}>{formattedDate}</time>

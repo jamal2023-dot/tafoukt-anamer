@@ -23,7 +23,11 @@ export const projects: Project[] = [
       ar: 'مواكبة الجيل الجديد باللوازم والكتب والوسائل التربوية ومبادرات محددة وفق الاحتياجات التي تعتمدها المؤسسة التعليمية.',
       en: 'Supporting the next generation with supplies, books, learning materials and targeted initiatives based on needs confirmed by the school.',
     },
-    status: { fr: 'En préparation', ar: 'قيد الإعداد', en: 'In preparation' },
+    status: {
+      fr: 'Phase 1 · Objectif atteint',
+      ar: 'المرحلة الأولى · تم بلوغ الهدف',
+      en: 'Phase 1 · Target reached',
+    },
     eyebrow: { fr: 'Éducation', ar: 'التعليم', en: 'Education' },
   },
   {
@@ -44,9 +48,9 @@ export const projects: Project[] = [
       en: 'Creating a welcoming, safe and sustainable field for training, matches and community life.',
     },
     status: {
-      fr: 'Données à compléter',
-      ar: 'المعطيات قيد الاستكمال',
-      en: 'Details to be completed',
+      fr: '89 % réalisé',
+      ar: 'تم إنجاز 89٪',
+      en: '89% complete',
     },
     eyebrow: {
       fr: 'Sport & jeunesse',

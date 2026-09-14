@@ -3,16 +3,21 @@ import Link from 'next/link';
 import {
   ArrowUpRight,
   Banknote,
-  BookOpen,
   Boxes,
   Check,
+  CircleCheck,
+  Clock3,
   FileText,
-  HandHeart,
   Landmark,
+  LibraryBig,
+  PauseCircle,
   Phone,
   ShieldCheck,
+  Target,
+  Users,
 } from 'lucide-react';
 import { actionPoles } from '@/data/actions';
+import { phaseOne, phaseOneCopy } from '@/data/anamer-lit';
 import { contactDetails } from '@/data/contact';
 import { pageDetails, siteCopy } from '@/data/content';
 import { impact } from '@/data/impact';
@@ -206,8 +211,7 @@ function Projects({ locale }: { locale: Locale }) {
 
 function AnamerLit({ locale }: { locale: Locale }) {
   const d = pageDetails[locale];
-  const objectives = d.anamerObjectives as string[];
-  const process = d.anamerProcess as string[];
+  const phase = phaseOneCopy[locale];
   const schoolPhotos = [
     {
       src: '/images/anamer-lit/ecole-entree.jpg',
@@ -257,28 +261,155 @@ function AnamerLit({ locale }: { locale: Locale }) {
   ];
   return (
     <>
-      <section className="section compact">
-        <div className="story-grid">
+      <section
+        className="section compact phase-one-intro"
+        id="phase-one-progress"
+      >
+        <div className="phase-one-lead">
           <div>
+            <span className="phase-badge">
+              <CircleCheck size={17} />
+              {phase.badge as string}
+            </span>
             <p className="eyebrow">
               <span />
-              {tr(locale, 'Contexte', 'السياق', 'Background')}
+              {phase.programme as string}
             </p>
-            <h2>
+            <h2>{phase.headline as string}</h2>
+            <p>{phase.intro as string}</p>
+            <p className="phase-name">{phase.phase as string}</p>
+          </div>
+          <div className="initiative-mark">
+            <Image
+              src="/images/anamer-lit/initiative-logo.png"
+              alt={tr(
+                locale,
+                'Logo de l’initiative Anamer Lit',
+                'شعار مبادرة أنامر تقرأ',
+                'Anamer Reads initiative logo',
+              )}
+              fill
+              sizes="(max-width: 800px) 70vw, 380px"
+              priority
+            />
+          </div>
+        </div>
+      </section>
+      <section className="section cream-section phase-results-section">
+        <div className="phase-kpi-grid">
+          {[
+            [phase.target, '7 740 DH', Target],
+            [phase.raised, '9 579 DH', Banknote],
+            [phase.surplus, '1 839 DH', ShieldCheck],
+            [phase.pupils, String(phaseOne.pupils), Users],
+            [phase.books, String(phaseOne.books), LibraryBig],
+          ].map(([label, value, Icon]) => (
+            <article key={label as string}>
+              <Icon size={22} />
+              <strong>{value as string}</strong>
+              <p>{label as string}</p>
+            </article>
+          ))}
+        </div>
+        <div
+          className="funding-progress"
+          aria-label={`${phase.status}: ${phaseOne.progress}%`}
+        >
+          <div>
+            <strong>{phase.status as string}</strong>
+            <span>{phaseOne.progress}%</span>
+          </div>
+          <div className="progress-track" aria-hidden="true">
+            <span />
+          </div>
+          <p>
+            <PauseCircle size={17} />
+            {phase.statusNote as string}
+          </p>
+        </div>
+        <p className="surplus-note">{phase.surplusNote as string}</p>
+      </section>
+      <section className="section beneficiary-section">
+        <SectionHeading
+          eyebrow={tr(locale, 'Bénéficiaires', 'المستفيدون', 'Beneficiaries')}
+          title={tr(
+            locale,
+            '40 élèves accompagnés par cette première phase.',
+            '40 تلميذاً وتلميذة يستفيدون من هذه المرحلة الأولى.',
+            '40 pupils supported by this first phase.',
+          )}
+          intro={d.pupilsNote as string}
+        />
+        <div className="beneficiary-split">
+          <article>
+            <span>{phaseOne.anamerPupils}</span>
+            <p>{phase.anamer as string}</p>
+          </article>
+          <strong aria-hidden="true">+</strong>
+          <article>
+            <span>{phaseOne.ifranePupils}</span>
+            <p>{phase.ifrane as string}</p>
+          </article>
+          <strong aria-hidden="true">=</strong>
+          <article className="beneficiary-total">
+            <span>{phaseOne.pupils}</span>
+            <p>{phase.pupils as string}</p>
+          </article>
+        </div>
+      </section>
+      <section className="section campaign-visuals-section">
+        <SectionHeading
+          eyebrow={tr(locale, 'Campagne 2026', 'حملة 2026', '2026 campaign')}
+          title={tr(
+            locale,
+            'De la mobilisation au résultat vérifié.',
+            'من التعبئة إلى النتيجة المؤكدة.',
+            'From mobilisation to a verified result.',
+          )}
+        />
+        <div className="campaign-visuals">
+          <figure>
+            <Image
+              src="/images/anamer-lit/initiative-2026.png"
+              alt={tr(
+                locale,
+                'Affiche de lancement de la campagne Anamer Lit 2026',
+                'ملصق إطلاق حملة أنامر تقرأ 2026',
+                'Launch poster for the 2026 Anamer Reads campaign',
+              )}
+              fill
+              sizes="(max-width: 800px) 100vw, 50vw"
+            />
+            <figcaption>
               {tr(
                 locale,
-                'Une école, plusieurs générations, un nouvel élan.',
-                'مدرسة وأجيال متعددة وانطلاقة جديدة.',
-                'One school, several generations, a new beginning.',
+                'Lancement de l’initiative',
+                'إطلاق المبادرة',
+                'Initiative launch',
               )}
-            </h2>
-            <p>{d.anamerContext as string}</p>
-          </div>
-          <aside className="beneficiary-card">
-            <BookOpen size={26} />
-            <strong>{d.pupils as string}</strong>
-            <p>{d.pupilsNote as string}</p>
-          </aside>
+            </figcaption>
+          </figure>
+          <figure>
+            <Image
+              src="/images/anamer-lit/phase-1-results.png"
+              alt={tr(
+                locale,
+                'Affiche officielle des résultats de la première phase',
+                'الملصق الرسمي لنتائج المرحلة الأولى',
+                'Official Phase One results poster',
+              )}
+              fill
+              sizes="(max-width: 800px) 100vw, 50vw"
+            />
+            <figcaption>
+              {tr(
+                locale,
+                'Bilan vérifié de la première phase',
+                'الحصيلة المؤكدة للمرحلة الأولى',
+                'Verified Phase One results',
+              )}
+            </figcaption>
+          </figure>
         </div>
       </section>
       <section className="section school-gallery-section">
@@ -323,41 +454,42 @@ function AnamerLit({ locale }: { locale: Locale }) {
       </section>
       <section className="section cream-section">
         <SectionHeading
-          eyebrow={tr(locale, 'Objectifs', 'الأهداف', 'Objectives')}
+          eyebrow={tr(locale, 'Avancement', 'تقدم المشروع', 'Progress')}
           title={tr(
             locale,
-            'Répondre aux besoins validés, sans supposer.',
-            'الاستجابة للحاجيات المعتمدة دون افتراضات.',
-            'Respond to confirmed needs without making assumptions.',
+            'Un parcours public, de la demande au bilan.',
+            'مسار معلن من تحديد الحاجة إلى الحصيلة.',
+            'A public journey, from identifying needs to reporting outcomes.',
           )}
         />
-        <div className="check-grid">
-          {objectives.map((item) => (
-            <div key={item}>
-              <Check size={18} />
-              <span>{item}</span>
-            </div>
-          ))}
-        </div>
-      </section>
-      <section className="section">
-        <SectionHeading
-          eyebrow={tr(locale, 'Méthode', 'المنهجية', 'Method')}
-          title={tr(
-            locale,
-            'Un processus lisible, de la demande au bilan.',
-            'مسار واضح من تحديد الحاجة إلى الحصيلة.',
-            'A clear process, from identifying the need to reporting outcomes.',
-          )}
-        />
-        <ol className="process-list">
-          {process.map((item, index) => (
-            <li key={item}>
+        <ol className="process-list phase-timeline">
+          {(phase.timeline as string[]).map((item, index) => (
+            <li className={index < 4 ? 'is-complete' : 'is-pending'} key={item}>
               <span>{String(index + 1).padStart(2, '0')}</span>
+              {index < 4 ? <CircleCheck size={20} /> : <Clock3 size={20} />}
               <p>{item}</p>
             </li>
           ))}
         </ol>
+      </section>
+      <section className="section phase-two-section">
+        <div>
+          <span className="phase-two-label">{phase.phaseTwo as string}</span>
+          <h2>{phase.nextTitle as string}</h2>
+          <p>{phase.nextIntro as string}</p>
+        </div>
+        <div className="future-needs">
+          {(phase.futureNeeds as string[]).map((need) => (
+            <div key={need}>
+              <Check size={18} />
+              <span>{need}</span>
+            </div>
+          ))}
+        </div>
+        <Link className="button button-gold" href={`/${locale}/transparence`}>
+          {phase.follow as string}
+          <ArrowUpRight size={18} />
+        </Link>
       </section>
     </>
   );
@@ -658,10 +790,18 @@ function News({ locale }: { locale: Locale }) {
 }
 
 function Transparency({ locale }: { locale: Locale }) {
-  const site = siteCopy[locale];
+  const phase = phaseOneCopy[locale];
   return (
     <>
       <section className="section compact">
+        <div className="transparency-status">
+          <span className="phase-badge">
+            <CircleCheck size={17} />
+            {phase.badge as string}
+          </span>
+          <h2>{phase.programme as string}</h2>
+          <p>{phase.surplusNote as string}</p>
+        </div>
         <div className="impact-grid page-impact">
           {impact.map((item, index) => {
             const Icon = [Banknote, FileText, ShieldCheck, Boxes][index];
@@ -673,6 +813,39 @@ function Transparency({ locale }: { locale: Locale }) {
               </article>
             );
           })}
+        </div>
+        <div className="finance-pending-grid">
+          <article>
+            <FileText size={21} />
+            <p>
+              {tr(
+                locale,
+                'Dépenses réelles',
+                'المصاريف الفعلية',
+                'Actual expenses',
+              )}
+            </p>
+            <strong>{phase.actualExpenses as string}</strong>
+          </article>
+          <article>
+            <ShieldCheck size={21} />
+            <p>
+              {tr(locale, 'Solde final', 'الرصيد النهائي', 'Final balance')}
+            </p>
+            <strong>{phase.finalBalance as string}</strong>
+          </article>
+          <article>
+            <PauseCircle size={21} />
+            <p>
+              {tr(
+                locale,
+                'État de la collecte',
+                'حالة جمع المساهمات',
+                'Collection status',
+              )}
+            </p>
+            <strong>{phase.statusNote as string}</strong>
+          </article>
         </div>
       </section>
       <section className="section cream-section">
@@ -700,7 +873,14 @@ function Transparency({ locale }: { locale: Locale }) {
             <article key={label}>
               <FileText size={21} />
               <h3>{label}</h3>
-              <p>{site.noData}</p>
+              <p>
+                {tr(
+                  locale,
+                  'À publier après les achats, la distribution et la clôture comptable.',
+                  'ستنشر بعد الاقتناء والتوزيع والإغلاق المحاسبي.',
+                  'To be published after purchasing, distribution and financial closing.',
+                )}
+              </p>
             </article>
           ))}
         </div>
@@ -791,18 +971,29 @@ function BecomePartner({ locale }: { locale: Locale }) {
 }
 
 function Support({ locale }: { locale: Locale }) {
-  const d = pageDetails[locale];
+  const phase = phaseOneCopy[locale];
   return (
     <>
       <section className="section compact">
-        <div className="option-grid support-options">
-          {(d.supportOptions as string[]).map((item, i) => (
-            <article key={item}>
-              <span>0{i + 1}</span>
-              <HandHeart size={24} />
-              <h2>{item}</h2>
-            </article>
-          ))}
+        <div className="support-paused-card">
+          <PauseCircle size={34} />
+          <span className="phase-badge">{phase.badge as string}</span>
+          <h2>{phase.statusNote as string}</h2>
+          <p>
+            {tr(
+              locale,
+              'Merci à toutes les personnes qui ont contribué. La priorité est maintenant d’effectuer les achats, de distribuer les fournitures et de publier les justificatifs de la phase 1.',
+              'شكراً لكل من ساهم. الأولوية الآن هي إنجاز المشتريات وتوزيع اللوازم ونشر إثباتات المرحلة الأولى.',
+              'Thank you to everyone who contributed. The priority now is to complete purchases, distribute supplies and publish the Phase One supporting documents.',
+            )}
+          </p>
+          <Link
+            className="button"
+            href={`/${locale}/anamer-lit#phase-one-progress`}
+          >
+            {phase.follow as string}
+            <ArrowUpRight size={18} />
+          </Link>
         </div>
       </section>
       <section className="payment-note">
@@ -811,19 +1002,12 @@ function Support({ locale }: { locale: Locale }) {
           <h2>
             {tr(
               locale,
-              'Aucun paiement en ligne n’est actif.',
-              'لا توجد حالياً أي وسيلة دفع إلكترونية مفعلة.',
-              'No online payment method is currently active.',
+              'Aucune collecte pour la phase 2 n’est ouverte.',
+              'لا توجد حالياً أي حملة جمع للمرحلة الثانية.',
+              'No Phase Two fundraising is open.',
             )}
           </h2>
-          <p>
-            {tr(
-              locale,
-              'L’architecture pourra accueillir CMI, Stripe ou PayPal après validation des comptes officiels, des mentions légales et du processus comptable.',
-              'يمكن للمنصة استقبال CMI أو Stripe أو PayPal لاحقاً، بعد اعتماد الحسابات الرسمية والبيانات القانونية والمسار المحاسبي.',
-              'The platform can support CMI, Stripe or PayPal after official accounts, legal notices and accounting procedures have been approved.',
-            )}
-          </p>
+          <p>{phase.nextIntro as string}</p>
         </div>
       </section>
     </>

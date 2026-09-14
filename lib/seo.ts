@@ -2,8 +2,7 @@ import type { Locale, PageSlug } from '@/types';
 import { contactDetails } from '@/data/contact';
 
 export const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL ??
-  'https://tafoukt-anamer-jamalkarami2019.gheima.ma';
+  process.env.NEXT_PUBLIC_SITE_URL ?? 'https://tafoukt-anamer.site';
 
 export function organizationJsonLd(locale: Locale) {
   const organizationNames: Record<Locale, string> = {
